@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+    <!--COMMAND name="help"
+             help="Display an overview of the CLI syntax">
+        <ACTION builtin="clish_overview"/>
+    </COMMAND-->
+	<COMMAND name="top" help="Return to the exec mode" view="root-view" viewid=""/>
+    <COMMAND name="reboot" help="reboots the device">
+       <ACTION>exec /usr/local/xrio/scripts/reboot.sh</ACTION>
+    </COMMAND>
+    <COMMAND name="history"  help="Display the current session's command line history">
+        <PARAM name="limit"
+               help="Set the size of history list (zero means unbounded)"
+              ptype="UINT"
+            default=""/>
+        <ACTION builtin="clish_history">${limit}</ACTION>
+    </COMMAND>
+	
+	<COMMAND name="show" help="shows device information and configuration entries"/>
+	<COMMAND name="show running-config" help="shows the current configuration implemented on the system"/>
+	<COMMAND name="show working-config" help="shows the configuration that is currently being edited"/>
+	<COMMAND name="show live" help="shows the live status of the running configuration objects"/>
+	
+	<COMMAND name="show running-config link" help="show">
+		<PARAM name="name" help="name of the link to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config tunnel" help="show">
+		<PARAM name="name" help="name of the tunnel to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running tunnel ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config ethernet" help="show">
+		<PARAM name="name" help="name of the ethernet interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running ethernet ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config adsl" help="show">
+		<PARAM name="name" help="name of the adsl interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running adsl ${name}</ACTION>
+	</COMMAND>
+		<COMMAND name="show running-config mobile" help="show">
+		<PARAM name="name" help="name of the mobile interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running mobile ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config transparent" help="show">
+		<PARAM name="name" help="name of the transparent interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running transparent ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config lan" help="show">
+		<PARAM name="name" help="name of the lan interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config team" help="show">
+		<PARAM name="name" help="name of the team object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config address" help="show">
+		<PARAM name="name" help="name of the address object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config service-definition" help="show">
+		<PARAM name="name" help="name of the service object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running service-definition ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config policy" help="show">
+		<PARAM name="name" help="name of the policy to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config port-redirect" help="show">
+		<PARAM name="name" help="name of the port-redirect to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config route" help="show">
+		<PARAM name="name" help="name of the route to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running route ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config access-rule" help="show">
+		<PARAM name="name" help="name of the access-rule to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config user" help="show">
+		<PARAM name="name" help="name of the user to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running user ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show running-config system" help="shows system related information"/>
+	
+	<COMMAND name="show running-config system parameters" help="show system-parameters">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-parameters</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show running-config system service" help="show system services"/>
+	
+	<COMMAND name="show running-config system service dhcp" help="show system-service dhcp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service dhcp</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config system service ha" help="show system-service ha">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service ha</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config system service syslog" help="show system-service syslog">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service syslog</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config system service snmp" help="show system-service snmp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service snmp</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config system service smtp" help="show system-service smtp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service smtp</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show running-config routing" help="show routing configuration"/>
+	<COMMAND name="show running-config routing parameters" help="show routing parameters"/>
+	<COMMAND name="show running-config routing bgp" help="show bgp configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service bgp</ACTION>
+	</COMMAND>
+	<COMMAND name="show running-config routing rip" help="show rip configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-running system-service rip</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show live link" help="show">
+		<PARAM name="name" help="name of the link to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live tunnel" help="show">
+		<PARAM name="name" help="name of the tunnel to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live tunnel ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live ethernet" help="show">
+		<PARAM name="name" help="name of the ethernet interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live ethernet ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live adsl" help="show">
+		<PARAM name="name" help="name of the adsl interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live adsl ${name}</ACTION>
+	</COMMAND>
+		<COMMAND name="show live mobile" help="show">
+		<PARAM name="name" help="name of the mobile interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live mobile ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live transparent" help="show">
+		<PARAM name="name" help="name of the transparent interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live transparent ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live lan" help="show">
+		<PARAM name="name" help="name of the lan interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live team" help="show">
+		<PARAM name="name" help="name of the team object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live address" help="show">
+		<PARAM name="name" help="name of the address object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live service-definition" help="show">
+		<PARAM name="name" help="name of the service object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live service-definition ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live policy" help="show">
+		<PARAM name="name" help="name of the policy to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live port-redirect" help="show">
+		<PARAM name="name" help="name of the port-redirect to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live route" help="show">
+		<PARAM name="name" help="name of the route to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live route ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live access-rule" help="show">
+		<PARAM name="name" help="name of the access-rule to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show live user" help="show">
+		<PARAM name="name" help="name of the user to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live user ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show live system" help="shows system related information"/>
+	
+	<COMMAND name="show live system parameters" help="show system-parameters">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-parameters</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show live system service" help="show system services"/>
+	
+	<COMMAND name="show live system service dhcp" help="show system-service dhcp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service dhcp</ACTION>
+	</COMMAND>
+	<COMMAND name="show live system service ha" help="show system-service ha">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service ha</ACTION>
+	</COMMAND>
+	<COMMAND name="show live system service syslog" help="show system-service syslog">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service syslog</ACTION>
+	</COMMAND>
+	<COMMAND name="show live system service snmp" help="show system-service snmp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service snmp</ACTION>
+	</COMMAND>
+	<COMMAND name="show live system service smtp" help="show system-service smtp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service smtp</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show live routing" help="show routing configuration"/>
+	<COMMAND name="show live routing parameters" help="show routing parameters"/>
+	<COMMAND name="show live routing bgp" help="show bgp configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service bgp</ACTION>
+	</COMMAND>
+	<COMMAND name="show live routing rip" help="show rip configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-live system-service rip</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show working-config link" help="show">
+		<PARAM name="name" help="name of the link to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config tunnel" help="show">
+		<PARAM name="name" help="name of the tunnel to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working tunnel ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config ethernet" help="show">
+		<PARAM name="name" help="name of the ethernet interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working ethernet ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config adsl" help="show">
+		<PARAM name="name" help="name of the adsl interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working adsl ${name}</ACTION>
+	</COMMAND>
+		<COMMAND name="show working-config mobile" help="show">
+		<PARAM name="name" help="name of the mobile interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working mobile ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config transparent" help="show">
+		<PARAM name="name" help="name of the transparent interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working transparent ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config lan" help="show">
+		<PARAM name="name" help="name of the lan interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config team" help="show">
+		<PARAM name="name" help="name of the team object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config address" help="show">
+		<PARAM name="name" help="name of the address object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config service-definition" help="show">
+		<PARAM name="name" help="name of the service object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working service-definition ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config policy" help="show">
+		<PARAM name="name" help="name of the policy to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config port-redirect" help="show">
+		<PARAM name="name" help="name of the port-redirect to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config route" help="show">
+		<PARAM name="name" help="name of the route to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working route ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config access-rule" help="show">
+		<PARAM name="name" help="name of the access-rule to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config user" help="show">
+		<PARAM name="name" help="name of the user to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working user ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show working-config system" help="shows system related information"/>
+	
+	<COMMAND name="show working-config system parameters" help="show system-parameters">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-parameters</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show working-config system service" help="show system services"/>
+	
+	<COMMAND name="show working-config system service dhcp" help="show system-service dhcp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service dhcp</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config system service ha" help="show system-service ha">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service ha</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config system service syslog" help="show system-service syslog">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service syslog</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config system service snmp" help="show system-service snmp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service snmp</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config system service smtp" help="show system-service smtp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service smtp</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show working-config routing" help="show routing configuration"/>
+	<COMMAND name="show working-config routing parameters" help="show routing parameters"/>
+	<COMMAND name="show working-config routing bgp" help="show bgp configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service bgp</ACTION>
+	</COMMAND>
+	<COMMAND name="show working-config routing rip" help="show rip configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service rip</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show ip" help="information related to the tcp/ip subsystem"/>
+	<COMMAND name="show ip address" help="shows ip addresses currently present on the system">
+		<ACTION>exec /usr/sbin/ip -4 address</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip tunnel" help="show tunnel objects currently present on the system">
+		<ACTION>exec /usr/sbin/ip tunnel</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip route" help="shows static routes">
+		<ACTION>exec /usr/sbin/ip route</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip access-rule" help="show firewall access control entries">
+		<ACTION>exec /sbin/iptables -L INPUT -n</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show ip bgp" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show ip bgp"</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip bgp summary" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show ip bgp summary"</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip bgp running-config" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show running-config"</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip bgp neighbor" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show ip bgp neighbor"</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip bgp route-map" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show route-map"</ACTION>
+	</COMMAND>
+	<!--COMMAND name="show ip bgp prefix-list" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show ip bgp prefix-list"</ACTION>
+	</COMMAND>
+	<COMMAND name="show ip bgp prefix-list detail" help="show bgp related info">
+		<ACTION>exec /usr/local/sbin/vtysh -c "show ip bgp prefix-list detail"</ACTION>
+	</COMMAND-->
+	
+	<COMMAND name="show adsl" help="information related to the device's adsl ports"/>
+	<COMMAND name="show adsl status" help="shows the current status of adsl ports">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd debug adsl-status</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show adsl version" help="shows currently adsl firmware version">
+			<ACTION>exec cat /var/run/.adslVersion</ACTION>
+	</COMMAND>
+	<COMMAND name="show adsl parameter" help="retrieve parameters from adsl ports on the device">
+		<PARAM name="port" help="the number of the ADSL port" ptype="UINT"/>
+		<PARAM name="parameter" help="the parameter you want to retrieve" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/sbin/soloscli -g ${port} ${parameter}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show arp" help="shows the device's arp cache">
+		   <ACTION>exec /sbin/arp -n</ACTION>
+	   </COMMAND> 
+	 <COMMAND name="show mac" help="shows the mac address of the device">
+		   <ACTION>exec ifconfig Port1 | grep HWaddr</ACTION>
+	   </COMMAND>  
+	 
+	   <COMMAND name="show version" help="shows the current firmware version">
+		   <ACTION>exec /bin/cat /usr/local/xrio/.version</ACTION>
+	   </COMMAND> 
+	   <COMMAND name="show resource" help="shows information relating to the device's hardware resource"/>
+	   <COMMAND name="show resource cpu" help="current cpu load and statistics">
+		   <ACTION>exec /bin/cat /proc/cpuinfo</ACTION>
+	   </COMMAND>
+	   <COMMAND name="show resource memory" help="shows current memory allocation and utilisation">
+		   <ACTION>exec /bin/cat /proc/meminfo</ACTION>
+	   </COMMAND>
+	   
+	   <COMMAND name="show device" help="display information relating to this device"/>
+	   <COMMAND name="show device status" help="shows status information relating to all physical and logical interfaces connected to this devicee">
+		   <ACTION>exec /usr/local/xrio/scripts/cli-cmd show-device-status</ACTION>
+	   </COMMAND>
+	   
+	   <COMMAND name="show log" help="display log files stored on the device"/>
+	   <COMMAND name="show log commit" help="shows history relating to configuration changes">
+		   <ACTION>cat /var/log/commit.log</ACTION>
+	   </COMMAND>
+
+	   <COMMAND name="show log health" help="shows the healthcheck log when links or tunnels change their state">
+		   <ACTION>cat /var/log/healthcheck.log</ACTION>
+	   </COMMAND>
+	
+		<COMMAND name="show log link" help="shows the healthcheck log when links or tunnels change their state" help_action="/usr/local/xrio/scripts/cli-cmd list link">
+			<PARAM name="name" help="specify the name of the link" ptype="STRING"/>
+			<ACTION>cat /var/log/${name}.log</ACTION>
+	   </COMMAND>
+	   
+	   <COMMAND name="show log dynamic-bonding" help="shows the dynamic bonding log">
+		   <ACTION>cat /var/log/xdbd.log</ACTION>
+	   </COMMAND>
+	
+	<COMMAND name="ping" help="verify connectivity to a specified host">
+       <DETAIL>verifies the status of a specified host</DETAIL>
+       <PARAM name="num_echos" help="Specify the number of echo requests to be sent" ptype="UINT" prefix="-c" default="5" />
+       <PARAM name="hops" help="Specify maximum number of hops" ptype="UINT" prefix="-h"/>
+       <PARAM name="dest" help="Host name or IP address" ptype="IP_ADDR" />
+       <ACTION>exec /bin/ping ${-c :num_echos} ${-t :hops} ${dest}</ACTION>
+   </COMMAND>
+   <COMMAND name="traceroute" help="outputs the path to a specified host">
+       <DETAIL>outputs the path to a specified host</DETAIL>
+       <PARAM name="hops" help="Specify maximum number of hops" ptype="UINT" prefix="-h"/>
+       <PARAM name="dest" help="Remote system to trace" ptype="IP_ADDR" />
+       <ACTION>exec traceroute -n ${-m :hops} ${dest}</ACTION>
+    </COMMAND>
+	
+	<COMMAND name="set" help="set various device parameters"/>
+	<COMMAND name="set output-format" help="specifies the output format for show commands"/>
+	<COMMAND name="set output-format table" help="outputs data in formatted tables">
+		<ACTION>echo table > /var/run/xrio/output-format</ACTION>
+	</COMMAND>
+	<COMMAND name="set output-format config" help="outputs data in configuration format that can be used to build configurations">
+		<ACTION>echo config > /var/run/xrio/output-format</ACTION>
+	</COMMAND>
+	
+			<COMMAND name="config" help="configuration file related functions"/>
+		
+		<COMMAND name="config download" help="downloads a configuration file using http">
+			<PARAM name="url" help="the URL of the config file" ptype="URL"/>
+			<ACTION>exec /usr/local/xrio/scripts/cli-cmd config download ${url}</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config reset" help="resets the device's configuration to a default state.">
+		   <ACTION>/usr/local/xrio/scripts/resetConfig.sh</ACTION>
+	   </COMMAND>
+	   
+	   	<COMMAND name="config save" help="saves the current configuration to flash">	
+			<ACTION>exec /usr/local/xrio/scripts/cli-cmd config save</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config history" help="shows configuration version history allowing restore">	
+			<ACTION>exec /usr/local/xrio/scripts/listConfig.sh</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config version" help="shows the current configuration version">	
+			<ACTION>cat /usr/local/xrio/config/configversion</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config restore" help="restores a configuration from version history">
+			<PARAM name="version" help="the version string of the configuration you want to restore" ptype="STRING"/>
+			<ACTION>exec /usr/local/xrio/scripts/loadConfig.sh ${version}</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config export" help="exports a configuration to the UBM's web server.  You can access this file in the /export directory">
+			<PARAM name="format" help="the export file format, possible formats are xml or cfg" ptype="STRING"/>
+			<PARAM name="destination" help="the name of the filename to export to, the .cfg extension will be appended" ptype="STRING"/>
+			<ACTION>exec /usr/local/xrio/scripts/cli-cmd config export ${format} ${destination}</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config copy" help="copies the current configuration for latest retrieval">
+			<PARAM name="destination" help="the name in which to save the configuration" ptype="STRING"/>
+			<ACTION>cp /usr/local/xrio/config/ubm.xml /usr/local/xrio/config/${destination}.xml</ACTION>
+		</COMMAND>
+		
+		<COMMAND name="config load" help="loads the specified configuration">
+			<PARAM name="name" help="the name in which to save the configuration" ptype="STRING"/>
+			<ACTION>cp /usr/local/xrio/config/${name}.xml /usr/local/xrio/config/ubm.xml</ACTION>
+		</COMMAND>
+	
+</CLISH_MODULE>
