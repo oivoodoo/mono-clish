@@ -52,6 +52,12 @@ namespace Clish
         /// </summary>
         public Configuration Configuration { get; set; }
 
+        /// <summary>
+        /// Gets or sets the line editor of the terminal unix like emulation.
+        /// </summary>
+        /// <value>The line editor.</value>
+        public LineEditor LineEditor { get; set; }
+
         #endregion
 
         #region [  Creation of commands  ]
@@ -109,10 +115,10 @@ namespace Clish
             PreloadConfiguration();
 
             String command;
-            var editor = new LineEditor(null);
-            editor.AutoCompleteEvent += OnAutoComplete;
-            editor.TabKeyEvent += OnEditorTabKeyEvent;
-            while ((command = editor.Edit(CurrentSession.Prompt, "")) != null)
+            LineEditor = new LineEditor(null);
+            LineEditor.AutoCompleteEvent += OnAutoComplete;
+            LineEditor.TabKeyEvent += OnEditorTabKeyEvent;
+            while ((command = LineEditor.Edit(CurrentSession.Prompt, "")) != null)
             {
                 RunCommand(command);
             }
@@ -230,6 +236,25 @@ namespace Clish
         {
             // Syscall.run(command); INFO: Read results and print to terminal.
             Console.WriteLine(command);
+
+            // TODO: May be have to rewrite this method.
+            String line = String.Empty;
+            String backup = command;
+            for(int i = 0; i < command.Length; i++)
+            {
+                backup = backup.Replace(command[i].ToString(), String.Empty);
+                if (line.LastIndexOf(" ") == line.Length - 1 && String.IsNullOrEmpty(command[i].ToString().Trim()))
+                    continue;
+                line += command[i];
+                List<CommandNode> nodes = CurrentSession.CommandNode.Search(line);
+                if (nodes.Count == 1)
+                {
+                    // We found one command, now we have to parse params.
+
+                }
+            }
+            
+            Console.WriteLine("You try to run invalid command.");
         }
 
         /// <summary>
@@ -254,10 +279,32 @@ namespace Clish
                     {
                         completion = new Completion(String.Empty, new[] {postfix});
                     }
-                    else // Our command already ok, now we have to show another commands for user.
+                    else 
                     {
-                        nodes.ForEach(p => content.AddRange(p.Keys));
-                        completion = new Completion(String.Empty, content.ToArray());
+                        // Our command already ok, now we have to show another commands for user.
+                        var node = nodes.First();
+                        // We found command with nodes, it mean we can have another params for command or
+                        // sub commands to run.
+                        if (node.Nodes.Count != 0)
+                        {
+                            nodes.ForEach(p => content.AddRange(p.Keys));
+                            completion = new Completion(String.Empty, content.ToArray());
+                        }
+                        else
+                        {
+                            // Now we have to show params for the current command.
+                            var ps = node.Command.Params;
+                            if (ps != null)
+                            {
+                                // Show parameters help.
+                                var parameters = new List<Param>(ps);
+                                String paramsHelp = String.Empty;
+                                parameters.ForEach(p => paramsHelp += p.Name + "-" + p.Help + "\n");
+                                Console.WriteLine();
+                                Console.WriteLine(paramsHelp.Trim());
+                                LineEditor.Render();
+                            }
+                        }
                     }
                 }
                 else

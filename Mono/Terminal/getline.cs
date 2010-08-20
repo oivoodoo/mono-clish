@@ -230,7 +230,9 @@ namespace Mono.Terminal
 
             // Write one more to ensure that we always wrap around properly if we are at the
             // end of a line.
-            Console.Write(' ');
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//CUSTOMIZATION AKO
+//            Console.Write(' ');
 
             UpdateHomeRow(max);
         }

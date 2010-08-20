@@ -214,5 +214,32 @@ namespace Clish.Library
             }
             return new List<CommandNode>();
         }
+
+        public List<CommandNode> OneSearch(String line)
+        {
+            return (from pair in Nodes where pair.Key.IndexOf(line) == 0 select pair.Value).ToList();
+        }
+
+        public CommandNode SearchDeeper(String line)
+        {
+            return SearchDeeper(this, line, String.Empty);
+        }
+
+        private CommandNode SearchDeeper(CommandNode node, String line, String command)
+        {
+            // We try to find maximum deep for typed command.
+            var nodes = new List<CommandNode>();
+            var result = node;
+            do
+            {
+                command += line[command.Length].ToString();
+                nodes = Nodes.Where(p => p.Key.IndexOf(command) == 0).Select(p => p.Value).ToList();
+            } while ((nodes.Count > 1 && Nodes.ContainsKey(command)) || nodes.Count == 0);
+            if (nodes.Count == 1)
+            {
+                result = SearchDeeper(nodes.First(), line, command);
+            }
+            return result;
+        }
     }
 }

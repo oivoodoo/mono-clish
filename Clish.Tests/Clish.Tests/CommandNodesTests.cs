@@ -182,5 +182,11 @@ namespace Clish.Tests
             Assert.IsTrue(node.Nodes["show"].Nodes["config"].FullName == "show config");
             Assert.IsTrue(node.Nodes["show"].Nodes["test"].FullName == "show test");
         }
+
+        [TestMethod]
+        public void SearchDeeperTest()
+        {
+
+        }
     }
 }
