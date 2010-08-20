@@ -1,0 +1,140 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="RunCommand`0" priority="0" />
+      <Item value="public" priority="1" />
+      <Item value="void" priority="1" />
+      <Item value="List" priority="6" />
+      <Item value="foreach" priority="5" />
+      <Item value="command" priority="0" />
+      <Item value="if" priority="5" />
+      <Item value="splitted" priority="3" />
+      <Item value="Length" priority="1" />
+      <Item value="new" priority="5" />
+      <Item value="List&lt;CommandNode&gt;" priority="2" />
+      <Item value="pair" priority="3" />
+      <Item value="var" priority="1" />
+      <Item value="CommandBuilder`0" priority="0" />
+      <Item value="return" priority="10" />
+      <Item value="results" priority="2" />
+      <Item value="Assert`0" priority="1" />
+      <Item value="cn1" priority="0" />
+      <Item value="node" priority="5" />
+      <Item value="collection" priority="1" />
+      <Item value="KeyValuePair" priority="0" />
+      <Item value="CommandNode`0" priority="7" />
+      <Item value="IEnumerable" priority="2" />
+      <Item value="String`0" priority="2" />
+      <Item value="private" priority="0" />
+      <Item value="parent" priority="1" />
+      <Item value="GetNodes`0" priority="0" />
+      <Item value="Nodes" priority="1" />
+      <Item value="TestMethod" priority="0" />
+      <Item value="n" priority="0" />
+      <Item value="int" priority="0" />
+      <Item value="count" priority="1" />
+      <Item value="CurrentSession" priority="0" />
+      <Item value="List&lt;string&gt;" priority="1" />
+      <Item value="ThreadStaticAttribute`0" priority="0" />
+      <Item value="using" priority="0" />
+      <Item value="System" priority="0" />
+      <Item value="content" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Clish.Library.Models.Command">
+      <Item value="Name" priority="1" />
+      <Item value="Help" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Clish.Library.CommandNode">
+      <Item value="Name" priority="0" />
+      <Item value="Nodes" priority="3" />
+      <Item value="Parent" priority="2" />
+      <Item value="Command" priority="3" />
+      <Item value="LinearNodes" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.KeyValuePair`2">
+      <Item value="Key" priority="0" />
+      <Item value="Value" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="Contains`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.VisualStudio.TestTools.UnitTesting.Assert">
+      <Item value="IsTrue`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Insert`0" priority="0" />
+      <Item value="Add`0" priority="0" />
+      <Item value="ForEach`0" priority="0" />
+      <Item value="ToArray`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Format`0" priority="0" />
+      <Item value="Empty" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.IEnumerable`1">
+      <Item value="FirstOrDefault`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="WriteLine`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:Configuration.cs" caret="0" fromTop="0" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="2677" fromTop="34" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="5496" fromTop="23" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Session.cs" caret="3095" fromTop="24" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Application.cs" caret="9830" fromTop="37" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Application.cs" caret="3885" fromTop="34" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Application.cs" caret="8757" fromTop="27" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="2489" fromTop="44" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="5053" fromTop="21" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="4599" fromTop="22" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="4641" fromTop="23" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="4784" fromTop="27" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="6010" fromTop="40" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="5591" fromTop="43" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="5607" fromTop="33" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="3866" fromTop="18" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="5653" fromTop="24" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="5670" fromTop="24" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="5887" fromTop="28" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Session.cs" caret="3498" fromTop="22" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="2263" fromTop="28" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="6010" fromTop="48" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="5927" fromTop="45" />
+      <File id="1AA24928-79CE-4CAA-B1DF-302F7FB9600B/f:CommandNodesTests.cs" caret="5987" fromTop="38" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="2888" fromTop="34" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="2576" fromTop="31" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="2874" fromTop="40" />
+      <File id="292EB5CA-3399-4351-8C8E-12BC81BA3F15/f:CommandNode.cs" caret="2361" fromTop="25" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Session.cs" caret="3445" fromTop="28" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Application.cs" caret="246" fromTop="9" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Session.cs" caret="3434" fromTop="31" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Session.cs" caret="3095" fromTop="24" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Application.cs" caret="4159" fromTop="33" />
+      <File id="77CB4541-677D-4297-9E01-82D20F248364/f:Application.cs" caret="9590" fromTop="27" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>
