@@ -1,10 +1,12 @@
-﻿namespace Clish.Commands
+﻿using Clish.Library;
+
+namespace Clish.Commands
 {
     public class TopCommand : TerminalCommand
     {
         public const string CommandName = "top";
 
-        public TopCommand(Application application) : base(application)
+        public TopCommand(Session application) : base(application)
         {
             Name = CommandName;
         }

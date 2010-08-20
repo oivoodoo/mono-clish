@@ -70,7 +70,6 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Mono\Terminal\getline.cs" />
-    <Compile Include="Session.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\TerminalCommand.cs" />
     <Compile Include="CommandBuilder.cs" />

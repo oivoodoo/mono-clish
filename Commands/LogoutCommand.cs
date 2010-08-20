@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using Clish.Commands;
 using Clish.Library;
-using Clish.Library.Models;
 
-namespace Clish.Terminal
+namespace Clish.Commands
 {
     /// <summary>
     /// Clish native exit command.
@@ -13,13 +10,13 @@ namespace Clish.Terminal
     {
         public const String CommandName = "logout";
 
-        public LogoutCommand(Application application) : base(application)
+        public LogoutCommand(Session application) : base(application)
         {
             Name = CommandName;
             Help = "Exit this CLI session";
         }
 
-        public override void Run(String rawCommand,  Dictionary<String, PType> types)
+        public override void Run(String rawCommand)
         {
             Console.WriteLine("");
             Environment.Exit(0);

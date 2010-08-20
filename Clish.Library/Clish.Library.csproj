@@ -81,6 +81,7 @@
     <Compile Include="Models\Startup.cs" />
     <Compile Include="Models\View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Session.cs" />
     <Compile Include="Utilities\FileUtility.cs" />
     <Compile Include="Utilities\NamespaceIgnorantXmlTextReader.cs" />
     <Compile Include="Utilities\XmlUtility.cs" />

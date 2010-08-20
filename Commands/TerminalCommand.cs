@@ -1,4 +1,5 @@
-﻿using Clish.Library.Models;
+﻿using Clish.Library;
+using Clish.Library.Models;
 
 namespace Clish.Commands
 {
@@ -8,20 +9,17 @@ namespace Clish.Commands
     /// </summary>
     public class TerminalCommand : Command
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TerminalCommand"/> class.
-        /// </summary>
-        /// <param name="application">The application.</param>
-        public TerminalCommand(Application application)
+        public TerminalCommand()
         {
-            Application = application;
         }
 
         /// <summary>
-        /// Gets or sets the application.
+        /// Initializes a new instance of the <see cref="TerminalCommand"/> class.
         /// </summary>
-        /// <value>The application.</value>
-        protected Application Application { get; set; }
+        /// <param name="session">The session.</param>
+        public TerminalCommand(Session session) : base(session)
+        {
+        }
 
         /// <summary>
         /// Runs the specified raw command.
@@ -29,7 +27,6 @@ namespace Clish.Commands
         /// <param name="rawCommand">The raw command.</param>
         public override void Run(string rawCommand)
         {
-            base.Run(rawCommand, Application.CurrentSession.PTypes);
         }
     }
 }

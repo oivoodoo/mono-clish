@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace Clish.Library.Models
 {
     public class CommandBase : ModelBase
     {
-        /// <summary>
-        /// TODO: May be we can make extinsion for this method for running via terminal or
-        /// use another system calls (may be via sockets for
-        /// transfernig command and gettings results).
-        /// </summary>
-        /// <param name="rawCommand">The raw command.</param>
-        /// <param name="types">The types.</param>
-        public virtual void Run(string rawCommand, Dictionary<string, PType> types)
+        public CommandBase()
         {
-            var builder = new CommandBuilder(rawCommand, (Command)this, types);
-            String action = builder.BuildCommand();
-            // TODO: Make sys call for run action.
         }
+
+        public CommandBase(Session session)
+        {
+            Session = session;
+        }
+
+        [XmlIgnore]
+        public Session Session { get; set; }
 
         /// <summary>
         /// Runs the specified raw command.

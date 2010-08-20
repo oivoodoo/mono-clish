@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Clish.Library;
 using Clish.Library.Models;
 
-namespace Clish
+namespace Clish.Library
 {
     /// <summary>
     /// Contains session information. Be default session is global.

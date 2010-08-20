@@ -7,7 +7,6 @@ using Clish.Commands;
 using Clish.Library;
 using Clish.Library.Models;
 using Clish.Logs.Logs;
-using Clish.Terminal;
 using Mono.Options;
 using Mono.Terminal;
 using Completion = Mono.Terminal.LineEditor.Completion;
@@ -70,9 +69,9 @@ namespace Clish
                 Configuration.Views.Add(Configuration.DefaultViewName, new CommandNode());
             }
             // we have to change it to another to logout command
-            Configuration.Views[Configuration.DefaultViewName].Add(new LogoutCommand(this));
-            Configuration.Views[Configuration.DefaultViewName].Add(new ExitCommand(this));
-            Configuration.Views[Configuration.DefaultViewName].Add(new TopCommand(this));
+            Configuration.Views[Configuration.DefaultViewName].Add(new LogoutCommand(CurrentSession));
+            Configuration.Views[Configuration.DefaultViewName].Add(new ExitCommand(CurrentSession));
+            Configuration.Views[Configuration.DefaultViewName].Add(new TopCommand(CurrentSession));
         }
 
         #endregion
@@ -235,17 +234,11 @@ namespace Clish
         private void RunCommand(String command)
         {
             // Syscall.run(command); INFO: Read results and print to terminal.
-            Console.WriteLine(command);
-
             CommandNode node = CurrentSession.CommandNode.SearchDeeper(ref command);
-            // If it's not the same node.
-            if (node.Parent != null)
+            if (node.Parent != null && node.Command != null)
             {
-//                var ps = new List<Param>(node.Command.Params);
-                Console.WriteLine(command);
+                node.Command.Run(command);
             }
-
-            Console.WriteLine("You try to run invalid command.");
         }
 
         /// <summary>

@@ -50,6 +50,14 @@ namespace Clish.Library.Models
     [XmlRoot("COMMAND")]
     public class Command : CommandBase
     {
+        public Command()
+        {
+        }
+
+        public Command(Session session) : base(session)
+        {
+        }
+
         /// <summary>
         /// Gets or sets the action.
         /// </summary>
