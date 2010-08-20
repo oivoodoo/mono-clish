@@ -14,6 +14,8 @@ namespace Clish.Library
 
         private readonly Dictionary<String, CommandNode> m_commands = new Dictionary<String, CommandNode>();
 
+        private String m_fullName = String.Empty;
+
         #endregion
 
         #region [  Constructors  ]
@@ -47,6 +49,22 @@ namespace Clish.Library
         /// </summary>
         /// <value>The name.</value>
         public String Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the full name.
+        /// </summary>
+        /// <value>The full name.</value>
+        public String FullName
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(m_fullName))
+                {
+                    m_fullName = GetFullName(m_fullName, this).Trim();
+                }
+                return m_fullName;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the command.
@@ -92,6 +110,15 @@ namespace Clish.Library
 
         #endregion
 
+        private String GetFullName(String fullName, CommandNode parent)
+        {
+            if (parent.Parent != null)
+            {
+                fullName = GetFullName(fullName, parent.Parent);
+            }
+            return fullName + " " + parent.Name;
+        }
+
         private List<CommandNode> GetNodes(List<CommandNode> collection, CommandNode parent)
         {
             foreach (KeyValuePair<string, CommandNode> pair in parent.Nodes)
@@ -127,7 +154,7 @@ namespace Clish.Library
             {
                 String key = splitted[0];
                 Command reference = splitted.Length == 1 ? command : null;
-                CommandNode created = new CommandNode(key, reference, this);
+                CommandNode created = new CommandNode(key, reference, node);
                 if (!node.Nodes.ContainsKey(key))
                 {
                     node.Nodes.Add(key, created);
@@ -178,7 +205,7 @@ namespace Clish.Library
             {
                 if (splitted.Length == 1)
                 {
-                    return (from pair in node.Nodes where pair.Key.Contains(splitted[0]) select pair.Value).ToList();
+                    return (from pair in node.Nodes where pair.Key.IndexOf(splitted[0]) ==0 select pair.Value).ToList();
                 }
                 if (node.Nodes.ContainsKey(splitted[0]))
                 {

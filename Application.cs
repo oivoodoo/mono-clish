@@ -240,14 +240,32 @@ namespace Clish
         /// <returns></returns>
         private Completion OnAutoComplete(String line, int position)
         {
-            // TODO: We have to replace Search method with searching by any keychars.
             var completion = new Completion(String.Empty, new string[0]);
-            var node = CurrentSession.CommandNode.Search(line);
-            if (node != null)
+            // Searching command nodes by draft line.
+            var nodes = CurrentSession.CommandNode.Search(line);
+            if (nodes.Count != 0)
             {
-                List<String> content = new List<String>();
-                node.ForEach(p => content.AddRange(p.Keys));
-                completion = new Completion(String.Empty, content.ToArray());
+                var content = new List<String>();
+                if (nodes.Count == 1)
+                {
+                    String postfix = nodes.First().FullName.Replace(line.Trim(), String.Empty);
+                    // we try to autocomplete current typed command.
+                    if (!String.IsNullOrEmpty(postfix))
+                    {
+                        completion = new Completion(String.Empty, new[] {postfix});
+                    }
+                    else // Our command already ok, now we have to show another commands for user.
+                    {
+                        nodes.ForEach(p => content.AddRange(p.Keys));
+                        completion = new Completion(String.Empty, content.ToArray());
+                    }
+                }
+                else
+                {
+                    // If we found multiple results we have to show it and that's nothing to do.
+                    nodes.ForEach(p => content.Add(p.Name));
+                    completion = new Completion(String.Empty, content.ToArray());
+                }
             }
             return completion;
         }

@@ -439,7 +439,9 @@ namespace Mono.Terminal
                     mismatch:
                         if (last != -1)
                         {
-                            InsertTextAtCursor(completions[0].Substring(0, last + 1));
+//                            InsertTextAtCursor(completions[0].Substring(0, last + 1));
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// CUSTOMIZATION AKO
                         }
                         Console.WriteLine();
                         foreach (string s in completions)

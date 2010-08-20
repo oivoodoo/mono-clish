@@ -69,7 +69,7 @@ namespace Clish.Tests
             Assert.IsTrue(node.Nodes["show"].Command == null);
 
 
-            Assert.IsTrue(node.Nodes["show"].Name == "show config");
+            Assert.IsTrue(node.Nodes["show"].Name == "show");
             Assert.IsTrue(node.Nodes["show"].Nodes.ContainsKey("config"));
             Assert.IsTrue(node.Nodes["show"].Nodes["config"].Command == command);
             // Assert.IsTrue(node.Nodes.First().Value.First().Command == "show");
@@ -164,6 +164,23 @@ namespace Clish.Tests
                 count++;
             }
             Assert.IsTrue(count == 4);
+        }
+
+        [TestMethod]
+        public void GetFullNameTest()
+        {
+            var node = new CommandNode();
+            var command1 = new Command { Name = "show config" };
+            var command2 = new Command { Name = "show" };
+            var command3 = new Command { Name = "show test" };
+
+            node.Add(command1);
+            node.Add(command2);
+            node.Add(command3);
+
+            Assert.IsTrue(node.Nodes["show"].FullName == "show");
+            Assert.IsTrue(node.Nodes["show"].Nodes["config"].FullName == "show config");
+            Assert.IsTrue(node.Nodes["show"].Nodes["test"].FullName == "show test");
         }
     }
 }
