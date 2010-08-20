@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+  <VIEW name="configure" prompt="configure&gt; ">
+  
+	<COMMAND name="add" help="add an object to the configuration" />
+	<COMMAND name="add link" help="add a new link object.  Links allow the UBM appliance to communicate with your WAN." view="edit-link" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the link to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add tunnel" help="add new tunnel" view="edit-tunnel" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the tunnel to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add tunnel ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="add transparent" help="add new transparent interface" view="edit-transparent" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the interface to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add transparent ${name}</ACTION>
+	</COMMAND>
+
+	<COMMAND name="add lan" help="add new lan" view="edit-lan" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the lan to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add team" help="add new team" view="edit-team" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the team to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add address" help="add new address" view="edit-address" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the address to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add service-definition" help="add new service definition" view="edit-service-definition" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the service to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add service-definition ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add policy" help="add new policy" view="edit-policy" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the policy to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add port-redirect" help="add new port-redirect" view="edit-port-redirect" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the port-redirect to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add route" help="add new route" view="edit-route" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the route to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add route ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add access-rule" help="add new access control rule" view="edit-access-rule" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the access-control to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add user" help="add a new web user" view="edit-user" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the user to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add user ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="add vlan" help="add a new web vlan" view="edit-vlan" viewid="name=${name};operation=add">
+		<PARAM name="name" help="name of the vlan to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd add vlan ${name}</ACTION>
+	</COMMAND>
+	
+		<!--====================edit========================-->
+
+	<COMMAND name="edit" help="edits an existing object in the configuration" />
+	<COMMAND name="edit link" help="edit a link" view="edit-link" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working link">
+		<PARAM name="name" help="name of the link to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit tunnel" help="edit a tunnel" view="edit-tunnel" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working tunnel">
+		<PARAM name="name" help="name of the tunnel to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit tunnel ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="edit ethernet" help="edit an ethernet interface" view="edit-ethernet" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working ethernet">
+		<PARAM name="name" help="name of the ethernet interface to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit ethernet ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit lan" help="edit a lan interface" view="edit-lan" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working lan">
+		<PARAM name="name" help="name of the lan interface to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit mobile" help="edit a mobile interface" view="edit-mobile" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working mobile">
+		<PARAM name="name" help="name of the mobile interface to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit mobile ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit transparent" help="edit a transparent interface" view="edit-transparent" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working transparent">
+		<PARAM name="name" help="name of the transparent interface to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit transparent ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit adsl" help="edit a adsl interface" view="edit-adsl" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working adsl">
+		<PARAM name="name" help="name of the adsl interface to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit adsl ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="edit team" help="edit a team" view="edit-team" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working team">
+		<PARAM name="name" help="name of the team to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit address" help="edit a address" view="edit-address" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working address">
+		<PARAM name="name" help="name of the address to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit service-definition" help="edit a service" view="edit-service-definition" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working service-definition">
+		<PARAM name="name" help="name of the service to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit service-definition ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit policy" help="edit a policy" view="edit-policy" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working policy">
+		<PARAM name="name" help="name of the policy to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit port-redirect" help="edit a port-redirect" view="edit-port-redirect" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working port-redirect">
+		<PARAM name="name" help="name of the port-redirect to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit route" help="edit a route" view="edit-route" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working route">
+		<PARAM name="name" help="name of the route to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit route ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit access-rule" help="edit a access control rule" view="edit-access-rule" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working access-rule">
+		<PARAM name="name" help="name of the access-control to edit" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit user" help="add a new user" view="edit-user" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working user">
+		<PARAM name="name" help="name of the user to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit user ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="edit vlan" help="add a new vlan" view="edit-vlan" viewid="name=${name};operation=edit" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working vlan">
+		<PARAM name="name" help="name of the vlan to add" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd edit vlan ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="edit routing" help="edits the routing daemon configuration"/>
+	<COMMAND name="edit routing bgp" help="edits the bgp configuration" view="edit-routing-bgp"/>
+	<COMMAND name="edit routing rip" help="edits the rip configuration" view="edit-routing-rip"/>
+	
+	<COMMAND name="edit system" help="edit system"/>
+	
+	<COMMAND name="edit system parameters" help="edit system parameters" view="parameters"/>
+	
+	<COMMAND name="edit system service" help="edit system services"/>
+	<COMMAND name="edit system service dhcp" help="edit system service dhcp" view="service-dhcp"/>
+	<COMMAND name="edit system service ha" help="edit system service ha" view="service-ha"/>
+	<COMMAND name="edit system service syslog" help="edit system service syslog" view="service-syslog"/>
+	<COMMAND name="edit system service snmp" help="edit system service snmp" view="service-snmp"/>
+	<COMMAND name="edit system service smtp" help="edit system service smtp" view="service-smtp"/>
+	
+	<COMMAND name="edit qos" help="edits the quality of service and traffic shaping configuration" view="edit-qos"/>
+	
+	<!--====================delete========================-->
+
+	<COMMAND name="delete" help="delete a specified object"/>
+	<COMMAND name="delete link" help="deletes a specified link object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working link">
+		<PARAM name="name" help="name of the link to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete tunnel" help="deletes a specified tunnel object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working tunnel">
+		<PARAM name="name" help="name of the tunnel to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete tunnel ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete transparent" help="deletes a specified transparent object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working transparent">
+		<PARAM name="name" help="name of the transparent interface to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete transparent ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete lan" help="deletes a specified lan object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working lan">
+		<PARAM name="name" help="name of the lan interface to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete team" help="deletes a specified team object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working team">
+		<PARAM name="name" help="name of the team object to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete address" help="deletes a specified address object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working address">
+		<PARAM name="name" help="name of the address object to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete service-definition" help="deletes a specified service-definition object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working service-definition">
+		<PARAM name="name" help="name of the service object to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete service ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete policy" help="deletes a specified policy object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working policy">
+		<PARAM name="name" help="name of the policy to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete port-redirect" help="deletes a specified port-redirect object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working port-redirect">
+		<PARAM name="name" help="name of the port-redirect to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete route" help="deletes a specified route object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working route">
+		<PARAM name="name" help="name of the route to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete route ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete access-rule" help="deletes a specified access-rule object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working access-rule">
+		<PARAM name="name" help="name of the access-control to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete user" help="deletes a specified user object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working user">
+		<PARAM name="name" help="name of the user to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete user ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="delete vlan" help="deletes a specified vlan object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working vlan">
+		<PARAM name="name" help="name of the vlan to be deleted" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd delete vlan ${name}</ACTION>
+	</COMMAND>
+
+		<!--==================rename====================-->
+		
+	<COMMAND name="rename" help="rename a specified object"/>
+	<COMMAND name="rename link" help="renames a specified link object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working link">
+		<PARAM name="name" help="name of the link to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this link" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename link ${name} ${new_name} </ACTION>
+	</COMMAND>
+	<COMMAND name="rename tunnel" help="renames a specified tunnel object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working tunnel">
+		<PARAM name="name" help="name of the tunnel to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this tunnel" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename tunnel ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename transparent" help="renames a specified transparent object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working transparent">
+		<PARAM name="name" help="name of the transparent interface to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this transparent link" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename transparent ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename lan" help="renames a specified lan object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working lan">
+		<PARAM name="name" help="name of the lan interface to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this lan" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename lan ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename team" help="renames a specified team object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working team">
+		<PARAM name="name" help="name of the team object to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this team" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename team ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename address" help="renames a specified address object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working address">
+		<PARAM name="name" help="name of the address object to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this address" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename address ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename service-definition" help="renames a specified service-definition object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working service-definition">
+		<PARAM name="name" help="name of the service object to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this service-definition" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename service ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename policy" help="renames a specified policy object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working policy">
+		<PARAM name="name" help="name of the policy to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this policy" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename policy ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename port-redirect" help="renames a specified port-redirect object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working port-redirect">
+		<PARAM name="name" help="name of the port-redirect to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this port-redirect object" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename port-redirect ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename route" help="renames a specified route object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working route">
+		<PARAM name="name" help="name of the route to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this route" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename route ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename access-rule" help="renames a specified access-rule object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working access-rule">
+		<PARAM name="name" help="name of the access-control to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this access-control rule" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename access-rule ${name} ${new_name}</ACTION>
+	</COMMAND>
+	<COMMAND name="rename user" help="renames a specified user object" help_action="/usr/local/xrio/scripts/cli-cmd lookup-working user">
+		<PARAM name="name" help="name of the user to be renamed" ptype="STRING"/>
+		<PARAM name="new_name" help="the new name for this user" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd rename user ${name} ${new_name}</ACTION>
+	</COMMAND>
+	
+		<!--==================show====================-->
+
+	<COMMAND name="show" help="show information relating to the current working configuration"/>
+	<COMMAND name="show link" help="show">
+		<PARAM name="name" help="name of the link to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working link ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show tunnel" help="show">
+		<PARAM name="name" help="name of the tunnel to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working tunnel ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show ethernet" help="show">
+		<PARAM name="name" help="name of the ethernet interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working ethernet ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show adsl" help="show">
+		<PARAM name="name" help="name of the adsl interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working adsl ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show mobile" help="show">
+		<PARAM name="name" help="name of the mobile interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working mobile ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show transparent" help="show">
+		<PARAM name="name" help="name of the transparent interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working transparent ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show lan" help="show">
+		<PARAM name="name" help="name of the lan interface to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working lan ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show team" help="show">
+		<PARAM name="name" help="name of the team object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working team ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show address" help="show">
+		<PARAM name="name" help="name of the address object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working address ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show service-definition" help="show">
+		<PARAM name="name" help="name of the service object to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working service-definition ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show policy" help="show">
+		<PARAM name="name" help="name of the policy to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working policy ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show port-redirect" help="show">
+		<PARAM name="name" help="name of the port-redirect to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working port-redirect ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show route" help="show">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working route</ACTION>
+	</COMMAND>
+	<COMMAND name="show routing" help="show routing configuration"/>
+	<COMMAND name="show routing parameters" help="show routing parameters"/>
+	<COMMAND name="show routing bgp" help="show bgp configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service bgp</ACTION>
+	</COMMAND>
+	<COMMAND name="show routing rip" help="show rip configuration">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service rip</ACTION>
+	</COMMAND>
+	<COMMAND name="show access-rule" help="show">
+		<PARAM name="name" help="name of the access-rule to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working access-rule ${name}</ACTION>
+	</COMMAND>
+	<COMMAND name="show user" help="show">
+		<PARAM name="name" help="name of the user to be shown" ptype="STRING" default=""/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working user ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show system" help="shows system related information"/>
+	
+	<COMMAND name="show system parameters" help="show system-parameters">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-parameters</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show system service" help="show system services"/>
+	
+	<COMMAND name="show system service dhcp" help="show system-service dhcp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service dhcp</ACTION>
+	</COMMAND>
+	<COMMAND name="show system service ha" help="show system-service ha">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service ha</ACTION>
+	</COMMAND>
+	<COMMAND name="show system service syslog" help="show system-service syslog">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service syslog</ACTION>
+	</COMMAND>
+	<COMMAND name="show system service snmp" help="show system-service snmp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service snmp</ACTION>
+	</COMMAND>
+	<COMMAND name="show system service smtp" help="show system-service smtp">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-working system-service smtp</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show changes" help="show changes">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd show-changes</ACTION>
+	</COMMAND>
+
+	<COMMAND name="commit" help="commit">	
+		<ACTION>exec /usr/local/xrio/scripts/commitConfiguration.sh</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="exit" help="exit" view="root-view">
+		<ACTION>exec /usr/local/xrio/scripts/exitConfigure.sh</ACTION>
+	</COMMAND>
+	
+</VIEW>
+	
+</CLISH_MODULE>

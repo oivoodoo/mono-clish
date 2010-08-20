@@ -1,0 +1,6 @@
+D:\Projects\oivoodoo\Clish.Logs\bin\Debug\Clish.Logs.dll
+D:\Projects\oivoodoo\Clish.Logs\bin\Debug\Clish.Logs.pdb
+D:\Projects\oivoodoo\Clish.Logs\bin\Debug\log4net.dll
+D:\Projects\oivoodoo\Clish.Logs\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\oivoodoo\Clish.Logs\obj\Debug\Clish.Logs.dll
+D:\Projects\oivoodoo\Clish.Logs\obj\Debug\Clish.Logs.pdb

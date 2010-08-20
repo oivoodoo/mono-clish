@@ -1,4 +1,5 @@
-﻿using Clish.Library;
+﻿using System.Collections.Generic;
+using Clish.Library;
 using Clish.Library.Models;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -67,6 +68,8 @@ namespace Clish.Tests
             Assert.IsTrue(node.Nodes.ContainsKey("show"));
             Assert.IsTrue(node.Nodes["show"].Command == null);
 
+
+            Assert.IsTrue(node.Nodes["show"].Name == "show config");
             Assert.IsTrue(node.Nodes["show"].Nodes.ContainsKey("config"));
             Assert.IsTrue(node.Nodes["show"].Nodes["config"].Command == command);
             // Assert.IsTrue(node.Nodes.First().Value.First().Command == "show");
@@ -120,19 +123,47 @@ namespace Clish.Tests
             node.Add(command1);
             node.Add(command2);
 
-            CommandNode cn1 = node.Search("show");
-            Assert.IsTrue(cn1.Name == "show");
-            Assert.IsNotNull(cn1.Command);
+            List<CommandNode> cn1 = node.Search("show");
             Assert.IsNotNull(cn1);
+            Assert.IsTrue(cn1.Count == 1);
+            Assert.IsTrue(cn1.First().Name == "show");
+            Assert.IsNotNull(cn1.First().Command);
 
-            CommandNode cn2 = node.Search("test");
-            Assert.IsNull(cn2);
+            List<CommandNode> cn2 = node.Search("test");
+            Assert.IsNotNull(cn2);
+            Assert.IsTrue(cn2.Count == 0);
 
-            CommandNode cn3 = node.Search("show config");
+            List<CommandNode> cn3 = node.Search("sh");
             Assert.IsNotNull(cn3);
-            Assert.IsTrue(cn3.Name == "config");
-            Assert.IsNotNull(cn3.Command);
+            Assert.IsTrue(cn3.First().Name == "show");
+            Assert.IsNotNull(cn3.Count == 1);
+
+            List<CommandNode> cn4 = node.Search("show c");
+            Assert.IsNotNull(cn4);
+            Assert.IsTrue(cn4.First().Name == "config");
+            Assert.IsNotNull(cn3.Count == 1);
         }
         
+        [TestMethod]
+        public void GetLinearNodesTest()
+        {
+            var node = new CommandNode();
+            var command1 = new Command { Name = "show config" };
+            var command2 = new Command { Name = "show" };
+            var command3 = new Command { Name = "show test" };
+            var command4 = new Command { Name = "linear" };
+
+            node.Add(command1);
+            node.Add(command2);
+            node.Add(command3);
+            node.Add(command4);
+
+            int count = 0;
+            foreach (var n in node.LinearNodes)
+            {
+                count++;
+            }
+            Assert.IsTrue(count == 4);
+        }
     }
 }

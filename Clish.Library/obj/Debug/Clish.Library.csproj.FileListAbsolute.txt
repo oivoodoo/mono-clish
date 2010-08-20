@@ -1,0 +1,16 @@
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\configure.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\debug.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\edit-view.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\global-commands.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\qos.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\root-view.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\startup.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\xml-examples\types.xml
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\Clish.Library.dll
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\Clish.Library.pdb
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\Clish.Logs.dll
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\log4net.dll
+D:\Projects\oivoodoo\Clish.Library\bin\Debug\Clish.Logs.pdb
+D:\Projects\oivoodoo\Clish.Library\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\oivoodoo\Clish.Library\obj\Debug\Clish.Library.dll
+D:\Projects\oivoodoo\Clish.Library\obj\Debug\Clish.Library.pdb

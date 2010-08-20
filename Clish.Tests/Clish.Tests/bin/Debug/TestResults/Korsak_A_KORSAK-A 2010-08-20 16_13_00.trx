@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="deb874b7-bec2-48f8-9279-cf2567bde68f" name="Korsak_A@KORSAK-A 2010-08-20 16:13:00" runUser="BELITGROUP\Korsak_A" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="17a4a585-7730-4312-a2a8-100cbbc78ca8">
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+    <Deployment runDeploymentRoot="Korsak_A_KORSAK-A 2010-08-20 16_13_00" />
+  </TestSettings>
+  <Times creation="2010-08-20T16:13:00.0843480+03:00" queuing="2010-08-20T16:13:00.9593760+03:00" start="2010-08-20T16:13:01.4750175+03:00" finish="2010-08-20T16:13:01.9281570+03:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="SearchThreeLevelCommandTest2" storage="d:\projects\oivoodoo\clish.tests\clish.tests\bin\debug\clish.tests.dll" id="967507a6-0afa-8839-99cc-26cbd78d0eff">
+      <Execution timeOut="1800000" id="33e21b07-7b2a-49de-8005-589960b93efd" />
+      <TestMethod codeBase="D:/Projects/oivoodoo/Clish.Tests/Clish.Tests/bin/Debug/Clish.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Clish.Tests.CommandNodesTests, Clish.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="SearchThreeLevelCommandTest2" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="967507a6-0afa-8839-99cc-26cbd78d0eff" executionId="33e21b07-7b2a-49de-8005-589960b93efd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="33e21b07-7b2a-49de-8005-589960b93efd" testId="967507a6-0afa-8839-99cc-26cbd78d0eff" testName="SearchThreeLevelCommandTest2" computerName="KORSAK-A" duration="00:00:00.1283420" startTime="2010-08-20T16:13:01.5531450+03:00" endTime="2010-08-20T16:13:01.8031530+03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33e21b07-7b2a-49de-8005-589960b93efd">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.IsTrue failed. </Message>
+          <StackTrace>   at Clish.Tests.CommandNodesTests.SearchThreeLevelCommandTest2() in D:\Projects\oivoodoo\Clish.Tests\Clish.Tests\CommandNodesTests.cs:line 129
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

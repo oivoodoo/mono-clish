@@ -114,7 +114,7 @@ namespace Clish
             editor.TabKeyEvent += OnEditorTabKeyEvent;
             while ((command = editor.Edit(CurrentSession.Prompt, "")) != null)
             {
-                Console.WriteLine(command);
+                RunCommand(command);
             }
         }
 
@@ -122,7 +122,7 @@ namespace Clish
         {
             if (String.IsNullOrEmpty((e as HandleKeyEventArgs).Text))
             {
-                ShowHelp();
+                CurrentSession.ShowAvailableCommands().ForEach(Console.WriteLine);
                 (sender as LineEditor).Render();
             }
         }
@@ -229,6 +229,7 @@ namespace Clish
         private void RunCommand(String command)
         {
             // Syscall.run(command); INFO: Read results and print to terminal.
+            Console.WriteLine(command);
         }
 
         /// <summary>
@@ -244,7 +245,9 @@ namespace Clish
             var node = CurrentSession.CommandNode.Search(line);
             if (node != null)
             {
-                completion = new Completion(String.Empty, node.Keys);
+                List<String> content = new List<String>();
+                node.ForEach(p => content.AddRange(p.Keys));
+                completion = new Completion(String.Empty, content.ToArray());
             }
             return completion;
         }

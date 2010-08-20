@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema
+                     http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+<VIEW name="debug" prompt="debug&gt; ">
+	<COMMAND name="measure" help="various bandwidth measurement functions"/>
+	<COMMAND name="measure path" help="measures a path">
+		<PARAM name="address" help="the remote address to measure" ptype="STRING"/>
+		<PARAM name="time" help="the number of seconds to measure" ptype="UINT" default="5"/>
+       <ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug measure-path ${address} ${time}</ACTION>
+   </COMMAND>
+   
+   	<COMMAND name="measure team" help="provides end to end measurement of a specified bonded team" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+		<PARAM name="name" help="enter the name of the team you which to test" ptype="STRING"/>
+		<PARAM name="duration" help="how long in seconds that you want to run the test" ptype="UINT" default="10" />
+		<PARAM name="inteval" help="after how many seconds in which to produce a result" ptype="UINT" default="2" />
+		<PARAM name="streams" help="the number of concurrent streams in which to test" ptype="UINT" default="1" />
+		<PARAM name="test_type" help="the type of test to run, valid options are tcp or udp" ptype="STRING" default="tcp" />
+		<PARAM name="rate" help="the rate in which to send udp test" ptype="UINT" default="0" />
+		<PARAM name="statistics" help="prints statistics for this test" ptype="STRING" default="yes" />
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug measure-team ${name} ${duration} ${inteval} ${streams} ${test_type} ${rate} ${statistics}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="measure tunnel" help="provides end to end measurement of a specified tunnel" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running tunnel">
+		<PARAM name="name" help="enter the name of the tunnel you which to test" ptype="STRING"/>
+		<PARAM name="duration" help="how long in seconds that you want to run the test" ptype="UINT" default="10" />
+		<PARAM name="inteval" help="after how many seconds in which to produce a result" ptype="UINT" default="2" />
+		<PARAM name="streams" help="the number of concurrent streams in which to test" ptype="UINT" default="1" />
+		<PARAM name="test_type" help="the type of test to run, valid options are tcp or udp" ptype="STRING" default="tcp" />
+		<PARAM name="rate" help="the rate in which to send udp test" ptype="UINT" default="0" />
+		<PARAM name="statistics" help="prints statistics for this test" ptype="STRING" default="yes" />
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug measure-tunnel ${name} ${duration} ${inteval} ${streams} ${test_type} ${rate} ${statistics}</ACTION>
+	</COMMAND>
+	
+   <COMMAND name="diagnose" help="various diagnostic tools"/>
+   <COMMAND name="diagnose performance" help="performance measuring tools"/>
+		
+    <COMMAND name="diagnose performance team" help="team measuring tools" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+		<PARAM name="team" help="enter the name of the team you which to test" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug diagnose-performance-team ${team}</ACTION>
+   </COMMAND>
+   
+      <COMMAND name="diagnose performance link" help="link measuring tools" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running link">
+		  <PARAM name="link" help="enter the name of the link you which to test" ptype="STRING"/>
+		  <PARAM name="url" help="enter the url of the file you wish to download" ptype="URL"/>
+		  <ACTION>exec /usr/local/xrio/scripts/diagnose-performance-link.sh ${link} ${url}</ACTION>
+   </COMMAND>
+   			
+	<COMMAND name="diagnose check" help="various diagnostic tools for fault finding purposes."/>
+			
+   <COMMAND name="diagnose check policies" help="looks at each configured policy and checks the backend configuration for issues and attemps to fix any that are found.">
+       <ACTION>>exec /usr/local/xrio/scripts/cli-cmd-exe debug check-policy</ACTION>
+   </COMMAND>
+   
+   <COMMAND name="diagnose check tunnels" help="looks at each configured tunnel and checks the backend configuration for issues and attemps to fix any that are found.">
+       <ACTION>>exec /usr/local/xrio/scripts/cli-cmd-exe debug check-tunnels</ACTION>
+   </COMMAND>
+   
+   <COMMAND name="diagnose check alias" help="looks at each policy and creates address aliases for policies that have no matching alias.">
+       <ACTION>>exec /usr/local/xrio/scripts/cli-cmd-exe debug check-alias</ACTION>
+   </COMMAND>
+   
+    <COMMAND name="diagnose check team" help="looks at each policy and creates address aliases for policies that have no matching alias.">
+		<PARAM name="team" help="Team Name" ptype="STRING"/>
+		<ACTION>>exec /usr/local/xrio/scripts/cli-cmd-exe debug check-team "${team}"</ACTION>
+   </COMMAND>
+
+   <COMMAND name="team" help="diagnostic commands for bonded teams"/>
+   <COMMAND name="team weights" help="set team weights"/>
+   <COMMAND name="team weights auto" help="measure each tunnel in the team and set the weight" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+		<PARAM name="team" help="Team Name" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug team-weights-auto ${team}</ACTION>
+	</COMMAND>
+   <COMMAND name="team weights manual" help="set the weight on each tunnel manually" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+   <PARAM name="team" help="Team Name" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug team-weights-manual ${team}</ACTION>
+	</COMMAND>
+	<COMMAND name="team weights check" help="measure each tunnel in the team and report only" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+		<PARAM name="team" help="Team Name" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug team-weights-check ${team}</ACTION>
+	</COMMAND>
+   <COMMAND name="team utilisation" help="shows the current traffic on the team and each associated tunnel" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+		<PARAM name="team" help="Team Name" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug team-utilisation ${team}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="team remeasure" help="shows the current traffic on the team and each associated tunnel" help_action="/usr/local/xrio/scripts/cli-cmd-exe lookup-running team">
+		<PARAM name="team" help="Team Name" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug team-remeasure ${team}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="packet-trace" help="capture packets flowing in and out of the device">
+		<PARAM name="parameters" help="enter standard tcpdump parameters remembering to add double quotes if the syntax contains spaces" ptype="PARAMETERS"/>
+		<ACTION>exec /usr/local/sbin/tcpdump ${parameters}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="ssh" help="an ssh client">
+		<PARAM name="parameters" help="enter ssh client parameters" ptype="PARAMETERS"/>
+		<ACTION>exec /usr/bin/ssh ${parameters}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="telnet" help="a telnet client">
+		<PARAM name="parameters" help="enter telnet client parameters" ptype="PARAMETERS"/>
+		<ACTION>exec /usr/bin/telnet ${parameters}</ACTION>
+	</COMMAND>
+  
+   <COMMAND name="adsl" help="various tools and options for the device's ADSL ports"/>
+   
+   	<COMMAND name="adsl status" help="">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug adsl-status</ACTION>
+	</COMMAND>
+   
+   <COMMAND name="adsl resync" help="drops and resynconised an ADSL interface">
+			<PARAM name="PortID" help="the ID of the physical adsl port to resync" ptype="UINT"/>
+       <ACTION>exec /usr/local/xrio/scripts/adslResync.sh ${PortID}</ACTION>
+   </COMMAND>
+  
+   <COMMAND name="adsl parameter" help="gets or sets parameters on the devices' ADSL ports"/>
+   
+    <COMMAND name="adsl parameter set" help="sets the specified paramter from the ADSL interface">
+			<PARAM name="PortID" help="the number of the ADSL port" ptype="UINT"/>
+			<PARAM name="Parameter" help="the parameter you want to set" ptype="STRING"/>
+			<PARAM name="Value" help="the parameter value" ptype="STRING"/> 
+       <ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug adsl-paramter-set ${PortID} ${Parameter} ${Value}</ACTION>
+   </COMMAND>
+
+	<COMMAND name="adsl parameter get" help="gets the specified paramter from the ADSL interface">
+			<PARAM name="PortID" help="the number of the ADSL port" ptype="UINT"/>
+			<PARAM name="Parameter" help="the parameter you want to set" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug adsl-paramter-get ${PortID} ${Parameter}</ACTION>
+	</COMMAND>
+	   
+   <COMMAND name="system" help="debugging tools relating to the ubm system"/>
+   <COMMAND name="system status-report" help="exports a snapshot of the current system status to be sent to Xrio's technical support and is available via the web at /export/system-report.bin">
+		<ACTION>exec /usr/local/xrio/scripts/generateSystemReport.sh <![CDATA[&&]]> echo "snapshot successfully created"</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="link" help="link related functions"/>
+	<COMMAND name="link hangup" help="hangs up the specified link">
+		<PARAM name="name" help="the name of the Link" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug link-hangup ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="link dial" help="dials the specified link">
+		<PARAM name="name" help="the name of the Link" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug link-dial ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="link redial" help="redials the specified link">
+		<PARAM name="name" help="the name of the Link" ptype="STRING"/>
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug link-redial ${name}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="show" help="shows various debug information"/>
+	<COMMAND name="show connections" help="shows statistics relating to the number of connections active on this device">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug show-connection-table</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="firewall" help=""/>
+	<COMMAND name="firewall open" help="opens up all ports on the UBM firewall, emergency use only">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug firewall-open</ACTION>
+	</COMMAND>
+	<COMMAND name="firewall restore" help="restores the default firewall rules to the working-config">
+		<ACTION>exec /usr/local/xrio/scripts/cli-cmd-exe debug firewall-restore</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="patch" help="for use by Xrio Support only">
+		<PARAM name="url" help="the url of the patch" ptype="URL"/>
+		<ACTION>exec /usr/local/xrio/scripts/get_patch.sh ${url}</ACTION>
+	</COMMAND>
+	
+	<COMMAND name="exit" help="exit" view="root-view">
+	</COMMAND>
+   
+</VIEW>
+</CLISH_MODULE>

@@ -81,7 +81,29 @@ namespace Clish.Library
             }
         }
 
+        /// <summary>
+        /// Gets the linear nodes.
+        /// </summary>
+        /// <value>The linear nodes.</value>
+        public List<CommandNode> LinearNodes
+        {
+            get { return GetNodes(new List<CommandNode>(), this); }
+        }
+
         #endregion
+
+        private List<CommandNode> GetNodes(List<CommandNode> collection, CommandNode parent)
+        {
+            foreach (KeyValuePair<string, CommandNode> pair in parent.Nodes)
+            {
+                if (pair.Value.Command != null)
+                {
+                    collection.Add(pair.Value);
+                }
+                GetNodes(collection, pair.Value);
+            }
+            return collection;
+        }
 
         /// <summary>
         /// Adds the specified command.
@@ -138,7 +160,7 @@ namespace Clish.Library
         /// </summary>
         /// <param name="line">The line.</param>
         /// <returns></returns>
-        public CommandNode Search(String line)
+        public List<CommandNode> Search(String line)
         {
             return Search(this, line);
         }
@@ -149,14 +171,21 @@ namespace Clish.Library
         /// <param name="node">The node.</param>
         /// <param name="line">The line.</param>
         /// <returns></returns>
-        public CommandNode Search(CommandNode node, String line)
+        public List<CommandNode> Search(CommandNode node, String line)
         {
             var splitted = line.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-            if (splitted.Length > 0 && node.Nodes.ContainsKey(splitted[0]))
+            if (splitted.Length > 0)
             {
-                return splitted.Length == 1 ? node.Nodes[splitted[0]] : Search(node.Nodes[splitted[0]], line.Replace(splitted[0], String.Empty).Trim());
+                if (splitted.Length == 1)
+                {
+                    return (from pair in node.Nodes where pair.Key.Contains(splitted[0]) select pair.Value).ToList();
+                }
+                if (node.Nodes.ContainsKey(splitted[0]))
+                {
+                    return Search(node.Nodes[splitted[0]], line.Replace(splitted[0], String.Empty).Trim());
+                }
             }
-            return null;
+            return new List<CommandNode>();
         }
     }
 }

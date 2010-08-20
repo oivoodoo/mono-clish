@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CLISH_MODULE xmlns="http://clish.sourceforge.net/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://clish.sourceforge.net/XMLSchema http://clish.sourceforge.net/XMLSchema/clish.xsd">
+
+	<VIEW name="qos" prompt="qos&gt; ">
+		
+		<COMMAND name="show" help="shows various information relating to qos"/>
+		<COMMAND name="show class" help="shows information relating to qos classes"/>
+		<COMMAND name="show class in" help="shows information relating to inbound traffic classes">
+		   <ACTION>exec /usr/sbin/tc -s class sh dev LANin</ACTION>
+	   </COMMAND>
+	   <COMMAND name="show class out" help="shows information relating to outbound traffic classes">
+		   <ACTION>exec /usr/sbin/tc -s class sh dev LANout</ACTION>
+	   </COMMAND>
+	   
+	   	<COMMAND name="exit" help="exit" view="root-view"/>
+	   
+	</VIEW>
+</CLISH_MODULE>

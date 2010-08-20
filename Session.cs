@@ -92,5 +92,23 @@ namespace Clish
         }
 
         #endregion
+
+        #region [  Methods  ]
+
+        /// <summary>
+        /// Shows the available commands.
+        /// </summary>
+        /// <returns></returns>
+        public List<String> ShowAvailableCommands()
+        {
+            List<String> results = new List<String>();
+            foreach (CommandNode node in Configuration.Views[ViewName].LinearNodes)
+            {
+                results.Add(String.Format("{0} - {1}", node.Command.Name, node.Command.Help));
+            }
+            return results;
+        }
+
+        #endregion
     }
 }
