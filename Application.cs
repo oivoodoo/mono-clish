@@ -237,23 +237,14 @@ namespace Clish
             // Syscall.run(command); INFO: Read results and print to terminal.
             Console.WriteLine(command);
 
-            // TODO: May be have to rewrite this method.
-            String line = String.Empty;
-            String backup = command;
-            for(int i = 0; i < command.Length; i++)
+            CommandNode node = CurrentSession.CommandNode.SearchDeeper(ref command);
+            // If it's not the same node.
+            if (node.Parent != null)
             {
-                backup = backup.Replace(command[i].ToString(), String.Empty);
-                if (line.LastIndexOf(" ") == line.Length - 1 && String.IsNullOrEmpty(command[i].ToString().Trim()))
-                    continue;
-                line += command[i];
-                List<CommandNode> nodes = CurrentSession.CommandNode.Search(line);
-                if (nodes.Count == 1)
-                {
-                    // We found one command, now we have to parse params.
-
-                }
+//                var ps = new List<Param>(node.Command.Params);
+                Console.WriteLine(command);
             }
-            
+
             Console.WriteLine("You try to run invalid command.");
         }
 

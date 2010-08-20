@@ -215,29 +215,42 @@ namespace Clish.Library
             return new List<CommandNode>();
         }
 
+        /// <summary>
+        /// Search command node on the one layer, don't go to deep of Nodes.
+        /// </summary>
+        /// <param name="line">The line.</param>
+        /// <returns></returns>
         public List<CommandNode> OneSearch(String line)
         {
             return (from pair in Nodes where pair.Key.IndexOf(line) == 0 select pair.Value).ToList();
         }
 
-        public CommandNode SearchDeeper(String line)
+        /// <summary>
+        /// Search the deeper node by draft command line.
+        /// </summary>
+        /// <param name="line">The line  part of line, it's the command params.</param>
+        /// <returns></returns>
+        public CommandNode SearchDeeper(ref String line)
         {
-            return SearchDeeper(this, line, String.Empty);
+            return SearchDeeper(this, ref line, String.Empty);
         }
 
-        private CommandNode SearchDeeper(CommandNode node, String line, String command)
+        private CommandNode SearchDeeper(CommandNode node, ref String line, String command)
         {
             // We try to find maximum deep for typed command.
             var nodes = new List<CommandNode>();
             var result = node;
-            do
+            var splitted = line.Split(new[] {" "}, StringSplitOptions.RemoveEmptyEntries);
+            if (splitted.Length > 0)
             {
-                command += line[command.Length].ToString();
-                nodes = Nodes.Where(p => p.Key.IndexOf(command) == 0).Select(p => p.Value).ToList();
-            } while ((nodes.Count > 1 && Nodes.ContainsKey(command)) || nodes.Count == 0);
-            if (nodes.Count == 1)
-            {
-                result = SearchDeeper(nodes.First(), line, command);
+                command += " " + splitted[0];
+                String[] cs = command.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                nodes = node.Nodes.Where(p => p.Key == cs[cs.Length - 1]).Select(p => p.Value).ToList();
+                if (nodes.Count == 1)
+                {
+                    line = line.Replace(cs[cs.Length - 1], String.Empty).Trim();
+                    result = SearchDeeper(nodes.First(), ref line, command);
+                }
             }
             return result;
         }

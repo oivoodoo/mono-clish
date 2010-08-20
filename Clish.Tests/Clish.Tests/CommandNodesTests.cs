@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Clish.Library;
 using Clish.Library.Models;
 using System.Linq;
@@ -184,9 +185,71 @@ namespace Clish.Tests
         }
 
         [TestMethod]
-        public void SearchDeeperTest()
+        public void SearchDeeperTest1()
         {
+            var node = new CommandNode();
+            var command1 = new Command { Name = "show config" };
+            var command2 = new Command { Name = "show" };
+            var command3 = new Command { Name = "show test" };
 
+            node.Add(command1);
+            node.Add(command2);
+            node.Add(command3);
+
+            string line = "show    config";
+            Assert.IsTrue(node.SearchDeeper(ref line).FullName == "show config");
+            Assert.IsTrue(String.IsNullOrEmpty(line));
+        }
+
+        [TestMethod]
+        public void SearchDeeperTest2()
+        {
+            var node = new CommandNode();
+            var command1 = new Command { Name = "show config" };
+            var command2 = new Command { Name = "show" };
+            var command3 = new Command { Name = "show test" };
+
+            node.Add(command1);
+            node.Add(command2);
+            node.Add(command3);
+
+            string line = "     show    config";
+            Assert.IsTrue(node.SearchDeeper(ref line).FullName == "show config");
+            Assert.IsTrue(String.IsNullOrEmpty(line));
+        }
+
+        [TestMethod]
+        public void SearchDeeperTest3()
+        {
+            var node = new CommandNode();
+            var command1 = new Command { Name = "show config" };
+            var command2 = new Command { Name = "show" };
+            var command3 = new Command { Name = "show test" };
+
+            node.Add(command1);
+            node.Add(command2);
+            node.Add(command3);
+
+            string line = "     show    config    ";
+            Assert.IsTrue(node.SearchDeeper(ref line).FullName == "show config");
+            Assert.IsTrue(String.IsNullOrEmpty(line));
+        }
+
+        [TestMethod]
+        public void SearchDeeperTest4()
+        {
+            var node = new CommandNode();
+            var command1 = new Command { Name = "show config" };
+            var command2 = new Command { Name = "show" };
+            var command3 = new Command { Name = "show test" };
+
+            node.Add(command1);
+            node.Add(command2);
+            node.Add(command3);
+
+            string line = "show";
+            Assert.IsTrue(node.SearchDeeper(ref line).FullName == "show");
+            Assert.IsTrue(String.IsNullOrEmpty(line));
         }
     }
 }
