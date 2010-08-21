@@ -16,6 +16,8 @@ namespace Clish.Library
     {
         private const String ArgumentPattern = @"\$\{\w+\}";
         private const String IntegerPattern = @"[+,-]{0,1}(\d+)";
+        private readonly List<String> m_parsedParams = new List<String>();
+        private const String StringPattern = @"([-\w]+)";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandBuilder"/> class.
@@ -47,6 +49,15 @@ namespace Clish.Library
         private Dictionary<String, PType> PTypes { get; set; }
 
         /// <summary>
+        /// Gets or sets the parse params.
+        /// </summary>
+        /// <value>The parse params.</value>
+        public List<String> ParsedParams
+        {
+            get { return m_parsedParams;  }
+        }
+
+        /// <summary>
         /// Build command by the arguments from command line.
         /// </summary>
         /// <returns></returns>
@@ -70,6 +81,7 @@ namespace Clish.Library
                     rawCommand = rawCommand.Replace(param, "");
                     // Replace macro statement with param value, typed by user in terminal.
                     result = result.Replace(token, param);
+                    ParsedParams.Add(param);
                 }
                 return result;
             }
@@ -97,7 +109,15 @@ namespace Clish.Library
                     break;
                 case MethodType.Regexp:
                     // INFO: We need to check this method for errors.
-                    param = GetParamByPattern(rawCommand, type.Pattern);
+                    if (!String.IsNullOrEmpty(type.Pattern))
+                    {
+                        param = GetParamByPattern(rawCommand, type.Pattern);
+                    }
+                    else
+                    {
+                        param = GetParamByPattern(rawCommand, StringPattern);
+                    }
+                    break;
                     break;
                 case MethodType.Select:
                     // INFO: what we need to write there for complete. !!!!!!!!!!!!

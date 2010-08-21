@@ -15,9 +15,8 @@ namespace Clish.Library
     {
         public const String DefaultViewName = "DEFAULT_VIEW";
         public const String XmlFormat = ".xml";
-        private static List<Command> _mCommands = new List<Command>();
         private static List<ClishModule> _mModules = new List<ClishModule>();
-        private static List<PType> _mPtypes = new List<PType>();
+        private static Dictionary<String, PType> _mPtypes = new Dictionary<String, PType>();
         private readonly Dictionary<string, CommandNode> m_views = new Dictionary<string, CommandNode>();
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace Clish.Library
         /// Gets or sets the P types.
         /// </summary>
         /// <value>The P types.</value>
-        public static List<PType> PTypes
+        public static Dictionary<String, PType> PTypes
         {
             get { return _mPtypes; }
             set { _mPtypes = value; }
@@ -96,7 +95,10 @@ namespace Clish.Library
                 }
                 if (module.PTypes != null)
                 {
-                    PTypes.AddRange(module.PTypes);
+                    foreach(PType type in module.PTypes)
+                    {
+                        PTypes.Add(type.Name, type);
+                    }
                 }
             }
         }

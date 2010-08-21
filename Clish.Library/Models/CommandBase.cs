@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace Clish.Library.Models
@@ -17,12 +18,40 @@ namespace Clish.Library.Models
         [XmlIgnore]
         public Session Session { get; set; }
 
+        [XmlIgnore]
+        public String ToRun { get; set; }
+
+        [XmlIgnore]
+        public List<String> ParsedParams { get; set; }
+
         /// <summary>
         /// Runs the specified raw command.
         /// </summary>
         /// <param name="rawCommand">The raw command.</param>
-        public virtual void Run(String rawCommand)
+        public virtual bool Run(String rawCommand)
         {
+            if (IsValidCommand(rawCommand))
+            {
+                // SysCall
+                // Session.Print()
+                return true;
+            }
+            return false;
+        }
+
+        protected bool IsValidCommand(String rawCommand)
+        {
+            var builder = new CommandBuilder(rawCommand, (Command)this, Configuration.PTypes);
+            try
+            {
+                ToRun = builder.BuildCommand();
+                ParsedParams = builder.ParsedParams;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return !String.IsNullOrEmpty(ToRun);
         }
     }
 }

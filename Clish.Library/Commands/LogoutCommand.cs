@@ -1,7 +1,6 @@
 ﻿using System;
-using Clish.Library;
 
-namespace Clish.Commands
+namespace Clish.Library.Commands
 {
     /// <summary>
     /// Clish native exit command.
@@ -16,10 +15,14 @@ namespace Clish.Commands
             Help = "Exit this CLI session";
         }
 
-        public override void Run(String rawCommand)
+        public override bool Run(String rawCommand)
         {
-            Console.WriteLine("");
-            Environment.Exit(0);
+            if (IsValidCommand(rawCommand))
+            {
+                Console.WriteLine("");
+                Environment.Exit(0);
+            }
+            return false;
         }
     }
 }

@@ -69,6 +69,11 @@
   <ItemGroup>
     <Compile Include="CommandBuilder.cs" />
     <Compile Include="CommandNode.cs" />
+    <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="Commands\LogoutCommand.cs" />
+    <Compile Include="Commands\TerminalCommand.cs" />
+    <Compile Include="Commands\TopCommand.cs" />
+    <Compile Include="Commands\ViewCommand.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\ClishModule.cs" />

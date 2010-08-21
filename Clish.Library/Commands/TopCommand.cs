@@ -1,6 +1,4 @@
-﻿using Clish.Library;
-
-namespace Clish.Commands
+﻿namespace Clish.Library.Commands
 {
     public class TopCommand : TerminalCommand
     {

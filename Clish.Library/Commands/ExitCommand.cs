@@ -1,7 +1,6 @@
 ﻿using System;
-using Clish.Library;
 
-namespace Clish.Commands
+namespace Clish.Library.Commands
 {
     /// <summary>
     /// Close session of the current view.
@@ -16,8 +15,13 @@ namespace Clish.Commands
             Help = "Exit this CLI session";
         }
 
-        public override void Run(String rawCommand)
+        public override bool Run(String rawCommand)
         {
+            if(IsValidCommand(rawCommand))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using Clish.Commands;
 using Clish.Library;
+using Clish.Library.Commands;
 using Clish.Library.Models;
 using Clish.Logs.Logs;
 using Mono.Options;
@@ -72,6 +72,7 @@ namespace Clish
             Configuration.Views[Configuration.DefaultViewName].Add(new LogoutCommand(CurrentSession));
             Configuration.Views[Configuration.DefaultViewName].Add(new ExitCommand(CurrentSession));
             Configuration.Views[Configuration.DefaultViewName].Add(new TopCommand(CurrentSession));
+            Configuration.Views[Configuration.DefaultViewName].Add(new ViewCommand(CurrentSession));
         }
 
         #endregion

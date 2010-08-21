@@ -78,6 +78,11 @@ namespace Clish.Library
         {
             Prompt = DefaultPromt;
             Configuration = configuration;
+            UpdateSession(viewName);
+        }
+
+        public bool UpdateSession(String viewName)
+        {
             ViewName = viewName;
             if (!String.IsNullOrEmpty(ViewName) &&
                 Configuration.Views.ContainsKey(ViewName))
@@ -87,7 +92,9 @@ namespace Clish.Library
                 Prompt = view != null ? view.Prompt : DefaultPromt;
                 // Set top node of the colleciton commands filtered by view name.
                 CommandNode = Configuration.Views[ViewName];
+                return true;
             }
+            return false;
         }
 
         #endregion

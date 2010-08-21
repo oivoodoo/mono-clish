@@ -1,7 +1,6 @@
-﻿using Clish.Library;
-using Clish.Library.Models;
+﻿using Clish.Library.Models;
 
-namespace Clish.Commands
+namespace Clish.Library.Commands
 {
     /// <summary>
     /// Base class for custom terminal clish commands such as 
@@ -25,8 +24,13 @@ namespace Clish.Commands
         /// Runs the specified raw command.
         /// </summary>
         /// <param name="rawCommand">The raw command.</param>
-        public override void Run(string rawCommand)
+        public override bool Run(string rawCommand)
         {
+            if(IsValidCommand(rawCommand))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

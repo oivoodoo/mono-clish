@@ -248,7 +248,12 @@ namespace Clish.Library
                 nodes = node.Nodes.Where(p => p.Key == cs[cs.Length - 1]).Select(p => p.Value).ToList();
                 if (nodes.Count == 1)
                 {
-                    line = line.Replace(cs[cs.Length - 1], String.Empty).Trim();
+                    // Remove only the first entrance of line!
+                    int index = line.IndexOf(cs[cs.Length - 1]);
+                    if (index != -1)
+                    {
+                        line = line.Substring(cs[cs.Length - 1].Length).Trim();
+                    }
                     result = SearchDeeper(nodes.First(), ref line, command);
                 }
             }
