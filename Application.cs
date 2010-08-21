@@ -70,7 +70,7 @@ namespace Clish
             }
             // we have to change it to another to logout command
             Configuration.Views[Configuration.DefaultViewName].Add(new LogoutCommand(CurrentSession));
-            Configuration.Views[Configuration.DefaultViewName].Add(new ViewCommand(CurrentSession));
+//            Configuration.Views[Configuration.DefaultViewName].Add(new ViewCommand(CurrentSession));
         }
 
         #endregion
@@ -205,7 +205,7 @@ namespace Clish
             // Create session with default prompt and view with default view name.
             CurrentSession = new Session(Configuration, Configuration.DefaultViewName) {LineEditor = LineEditor};
             // Create internal commands.
-//            CreateInternalCommands();
+            CreateInternalCommands();
             // Show startup and run defined action in the startup if we have it.
             ShowStartup();
         }
@@ -223,6 +223,10 @@ namespace Clish
             if (startup != null)
             {
                 Console.WriteLine(startup.Detail.TrimStart());
+                if (startup.View != null)
+                {
+                    CurrentSession.UpdateSession(startup.View);
+                }
                 RunCommand(startup.Action.Text);
             }
         }
