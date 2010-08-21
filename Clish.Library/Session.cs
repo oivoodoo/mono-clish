@@ -38,6 +38,8 @@ namespace Clish.Library
         /// <value>The name of the view.</value>
         public String ViewName { get; set; }
 
+        public String ViewId { get; set; }
+
         /// <summary>
         /// Gets or sets the command node.
         /// That's contains top of the colleciton of commands for running by view.
@@ -80,15 +82,16 @@ namespace Clish.Library
         {
             Prompt = DefaultPromt;
             Configuration = configuration;
-            UpdateSession(viewName);
+            UpdateSession(viewName, null);
         }
 
-        public bool UpdateSession(String viewName)
+        public bool UpdateSession(String viewName, String viewId)
         {
             ViewName = viewName;
             if (!String.IsNullOrEmpty(ViewName) &&
                 Configuration.Views.ContainsKey(ViewName))
             {
+                ViewId = viewId;
                 // Select prompt for showing in the terminal.
                 List <View[]> views = Configuration.Modules.Where(m => m.Views != null).Select(m => m.Views).ToList();
                 View view = null;
@@ -104,10 +107,7 @@ namespace Clish.Library
                 Prompt = view != null ? view.Prompt : DefaultPromt;
                 // Set top node of the colleciton commands filtered by view name.
                 CommandNode = Configuration.Views[ViewName];
-                foreach (KeyValuePair<string, string> pair in DefinedVariables.Variables)
-                {
-                    Prompt = Prompt.Replace(pair.Key, pair.Value);
-                }
+                Prompt = ApplyViewParams(Prompt);
                 return true;
             }
             return false;
@@ -138,27 +138,37 @@ namespace Clish.Library
         public void UpdateSessionByViewParams(string viewId)
         {
             //  Example of params line: viewid="name=${name};operation=add"
-            var ps = viewId.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
-            foreach (var line in ps)
+            ViewId = viewId;
+            Prompt = ApplyViewParams(Prompt);
+        }
+
+        public String ApplyViewParams(String raw)
+        {
+            if (!String.IsNullOrEmpty(ViewId))
             {
-                var values = line.Split(new[] { "=" }, StringSplitOptions.RemoveEmptyEntries);
-                if (values.Length == 2)
+                var ps = ViewId.Split(new[] {";"}, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var line in ps)
                 {
-                    // Remove cool hack from this line, when we found another way to bind xml attributes of view.
-                    if (values[1] == "${name}")
+                    var values = line.Split(new[] {"="}, StringSplitOptions.RemoveEmptyEntries);
+                    if (values.Length == 2)
                     {
-                        Prompt = Prompt.Replace("${" + values[0] + "}", ViewName);
-                    }
-                    else
-                    {
-                        Prompt = Prompt.Replace("${" + values[0] + "}", values[1]);
+                        // Remove cool hack from this line, when we found another way to bind xml attributes of view.
+                        if (values[1] == "${name}")
+                        {
+                            raw = raw.Replace("${" + values[0] + "}", ViewName);
+                        }
+                        else
+                        {
+                            raw = raw.Replace("${" + values[0] + "}", values[1]);
+                        }
                     }
                 }
             }
             foreach (KeyValuePair<string, string> pair in DefinedVariables.Variables)
             {
-                Prompt = Prompt.Replace(pair.Key, pair.Value);
+                raw = raw.Replace(pair.Key, pair.Value);
             }
+            return raw;
         }
 
         #endregion

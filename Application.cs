@@ -225,7 +225,7 @@ namespace Clish
                 Console.WriteLine(startup.Detail.TrimStart());
                 if (startup.View != null)
                 {
-                    CurrentSession.UpdateSession(startup.View);
+                    CurrentSession.UpdateSession(startup.View, null);
                 }
                 RunCommand(startup.Action.Text);
             }

@@ -153,13 +153,14 @@ namespace Clish.Library.Models
         public virtual bool Run(Session session, String rawCommand)
         {
             Session = session;
-            if (View != null)
-            {
-                Session.UpdateSession(View);
-            }
 
             if (IsValidCommand(rawCommand))
             {
+                if (View != null)
+                {
+                    Session.UpdateSession(View, ViewId);
+                }
+
                 if (Action != null && !String.IsNullOrEmpty(Action.BuiltIn))
                 {
                     switch (Action.BuiltIn)
@@ -181,8 +182,9 @@ namespace Clish.Library.Models
                 {
                     Log.CoreLog.Error(ex);
                     Console.WriteLine("Can't run command.");
+                    return false;
                 }
-				
+
                 return true;
             }
             return false;
@@ -198,16 +200,15 @@ namespace Clish.Library.Models
 
         protected bool IsValidCommand(String rawCommand)
         {
-            var builder = new CommandBuilder(rawCommand, (Command)this, Configuration.PTypes);
+            var builder = new CommandBuilder(rawCommand, this, Configuration.PTypes, Session);
             try
             {
+                if (!String.IsNullOrEmpty(ViewId))
+                {
+                    Session.UpdateSessionByViewParams(ViewId);
+                }
                 ToRun = builder.BuildCommand();
                 ParsedParams = builder.ParsedParams;
-                var command = ((Command)this);
-                if (!String.IsNullOrEmpty(command.ViewId))
-                {
-                    Session.UpdateSessionByViewParams(command.ViewId);
-                }
             }
             catch (Exception ex)
             {

@@ -28,7 +28,7 @@ namespace Clish.Library.Commands
         {
             if (View != null)
             {
-                Session.UpdateSession(View);
+                Session.UpdateSession(View, ViewId);
             }
             return true;
         }

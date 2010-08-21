@@ -31,7 +31,7 @@ namespace Clish.Library.Commands
         {
             if (IsValidCommand(command))
             {
-                return Session.UpdateSession(ParsedParams.First());
+                return Session.UpdateSession(ParsedParams.First(), ViewId);
             }
             return false;
         }

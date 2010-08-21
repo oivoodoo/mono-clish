@@ -25,12 +25,15 @@ namespace Clish.Library
         /// <param name="rawCommand">The raw command.</param>
         /// <param name="command">The command.</param>
         /// <param name="ptypes">The ptypes.</param>
-        public CommandBuilder(String rawCommand, Command command, Dictionary<String, PType> ptypes)
+        public CommandBuilder(String rawCommand, Command command, Dictionary<String, PType> ptypes, Session session)
         {
             RawCommand = rawCommand;
             Command = command;
             PTypes = ptypes;
+            Session = session;
         }
+
+        public Session Session { get; set; }
 
         /// <summary>
         /// Gets or sets the raw command.
@@ -68,20 +71,30 @@ namespace Clish.Library
             try
             {
                 String rawCommand = RawCommand;
-                for (int i = 0; i < collection.Count; i++)
+                // if we have additional params from view id property for action text.
+                if ((Command.Params == null || collection.Count != Command.Params.Length) &&
+                    !String.IsNullOrEmpty(Session.ViewId))
                 {
-                    String token = collection[i].Value;
-                    // INFO: We need to check it because 
-                    // in this place we can have problems connecting with command arguments.
-                    PType type = PTypes[Command.Params[i].PType];
-                    // In this method we will resolve param and clear in the typing command.
-                    String param = ResolveParam(rawCommand, type);
-                    // Remove from raw command param, because in another interation,
-                    // we can have same param pattern for searching.
-                    rawCommand = rawCommand.Replace(param, "");
-                    // Replace macro statement with param value, typed by user in terminal.
-                    result = result.Replace(token, param);
-                    ParsedParams.Add(param);
+                    result = Session.ApplyViewParams(result);
+                    collection = Regex.Matches(result, ArgumentPattern);
+                }
+                if (Command.Params != null)
+                {
+                    for (int i = 0; i < collection.Count; i++)
+                    {
+                        String token = collection[i].Value;
+                        // INFO: We need to check it because 
+                        // in this place we can have problems connecting with command arguments.
+                        PType type = PTypes[Command.Params[i].PType];
+                        // In this method we will resolve param and clear in the typing command.
+                        String param = ResolveParam(rawCommand, type);
+                        // Remove from raw command param, because in another interation,
+                        // we can have same param pattern for searching.
+                        rawCommand = rawCommand.Replace(param, "");
+                        // Replace macro statement with param value, typed by user in terminal.
+                        result = result.Replace(token, param);
+                        ParsedParams.Add(param);
+                    }
                 }
                 return result;
             }

@@ -19,7 +19,7 @@ namespace Clish.Library.Commands
         {
             if(IsValidCommand(rawCommand))
             {
-                Session.UpdateSession(Configuration.DefaultViewName);
+                Session.UpdateSession(Configuration.DefaultViewName, ViewId);
                 base.Run(Session, rawCommand);
                 return true;
             }
