@@ -1,4 +1,0 @@
-1. I have to implement not fixed params for custom commands.
-2. Create separate command models for each view.
-3. Create for each view permissions list.
-4. Add support for DBus mono as plugin.
