@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Clish.Library.Commands;
 
 namespace Clish.Library.Models
 {
@@ -141,6 +142,59 @@ namespace Clish.Library.Models
                 return !string.IsNullOrEmpty(View) ||
                           !string.IsNullOrEmpty(ViewId);
             }
+        }
+
+        /// <summary>
+        /// Runs the specified raw command. This method uses when we haven't insert session to constructor.
+        /// </summary>
+        /// <param name="rawCommand">The raw command.</param>
+        public virtual bool Run(Session session, String rawCommand)
+        {
+            Session = session;
+            if (View != null)
+            {
+                Session.UpdateSession(View);
+            }
+
+            if (IsValidCommand(rawCommand))
+            {
+                if (Action != null && !String.IsNullOrEmpty(Action.BuiltIn))
+                {
+                    switch (Action.BuiltIn)
+                    {
+                        case "clish_close":
+                            return new LogoutCommand(Session).Run(Session, rawCommand);
+                        case "clish_history":
+                            return new HistoryCommand(Session).Run(Session, rawCommand);
+                        case "clish_overview":
+                            return new HelpCommand(Session).Run(Session, rawCommand);
+                    }
+                }
+                // SysCall
+                // Session.Print()
+                return true;
+            }
+            return false;
+        }
+
+        protected bool IsValidCommand(String rawCommand)
+        {
+            var builder = new CommandBuilder(rawCommand, (Command)this, Configuration.PTypes);
+            try
+            {
+                ToRun = builder.BuildCommand();
+                ParsedParams = builder.ParsedParams;
+                var command = ((Command)this);
+                if (!String.IsNullOrEmpty(command.ViewId))
+                {
+                    Session.UpdateSessionByViewParams(command.ViewId);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return !String.IsNullOrEmpty(ToRun);
         }
     }
 }

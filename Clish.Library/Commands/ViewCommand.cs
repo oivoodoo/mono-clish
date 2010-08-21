@@ -27,7 +27,7 @@ namespace Clish.Library.Commands
             Action = new Action {Text = "view ${viewname}"};
         }
 
-        public override bool Run(String command)
+        public override bool Run(Session session, String command)
         {
             if (IsValidCommand(command))
             {

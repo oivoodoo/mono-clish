@@ -52,6 +52,6 @@ namespace Clish.Library.Models
         /// </summary>
         /// <value>The view.</value>
         [XmlElement("VIEW")]
-        public View View { get; set; }
+        public View[] Views { get; set; }
     }
 }

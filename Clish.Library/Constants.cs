@@ -1,6 +1,6 @@
 using System;
 
-namespace Clish
+namespace Clish.Library
 {
     public static class Constants
     {

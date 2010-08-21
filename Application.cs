@@ -70,8 +70,6 @@ namespace Clish
             }
             // we have to change it to another to logout command
             Configuration.Views[Configuration.DefaultViewName].Add(new LogoutCommand(CurrentSession));
-            Configuration.Views[Configuration.DefaultViewName].Add(new ExitCommand(CurrentSession));
-            Configuration.Views[Configuration.DefaultViewName].Add(new TopCommand(CurrentSession));
             Configuration.Views[Configuration.DefaultViewName].Add(new ViewCommand(CurrentSession));
         }
 
@@ -118,6 +116,9 @@ namespace Clish
             LineEditor = new LineEditor(null);
             LineEditor.AutoCompleteEvent += OnAutoComplete;
             LineEditor.TabKeyEvent += OnEditorTabKeyEvent;
+
+            InvokeOnConfigurationLoaded(EventArgs.Empty);
+
             while ((command = LineEditor.Edit(CurrentSession.Prompt, "")) != null)
             {
                 RunCommand(command);
@@ -179,8 +180,6 @@ namespace Clish
                 Log.CoreLog.Info("Read all files from configuration directory and create prototypes for it.");
                 Configuration = new Configuration(path);
             }
-
-            InvokeOnConfigurationLoaded(EventArgs.Empty);
         }
 
         /// <summary>
@@ -204,9 +203,9 @@ namespace Clish
         private void OnApplicationConfigurationLoaded(object sender, EventArgs e)
         {
             // Create session with default prompt and view with default view name.
-            CurrentSession = new Session(Configuration, Configuration.DefaultViewName);
-            // Create clish internal commands.
-            CreateInternalCommands();
+            CurrentSession = new Session(Configuration, Configuration.DefaultViewName) {LineEditor = LineEditor};
+            // Create internal commands.
+//            CreateInternalCommands();
             // Show startup and run defined action in the startup if we have it.
             ShowStartup();
         }
@@ -238,7 +237,7 @@ namespace Clish
             CommandNode node = CurrentSession.CommandNode.SearchDeeper(ref command);
             if (node.Parent != null && node.Command != null)
             {
-                node.Command.Run(command);
+                node.Command.Run(CurrentSession, command);
             }
         }
 

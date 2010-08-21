@@ -33,6 +33,7 @@
 // Only compile this code in the 2.0 profile, but not in the Moonlight one
 #if (IN_MCS_BUILD && NET_2_0 && !SMCS_SOURCE) || !IN_MCS_BUILD
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading;
@@ -87,7 +88,7 @@ namespace Mono.Terminal
         Thread edit_thread;
 
         // Our object that tracks history
-        History history;
+        public History history;
 
         // The contents of the kill buffer (cut/paste in Emacs parlance)
         string kill_buffer = "";
@@ -987,11 +988,12 @@ namespace Mono.Terminal
         // Emulates the bash-like behavior, where edits done to the
         // history are recorded
         //
-        class History
+        public class History
         {
             string[] history;
             int head, tail;
-            int cursor, count;
+            private int cursor;
+            public int count;
             string histfile;
 
             public History(string app, int size)
@@ -1185,6 +1187,18 @@ namespace Mono.Terminal
                 return null;
             }
 
+            internal string[] GetWithLimit(int p)
+            {
+                var collection = new List<String>();
+                for(int i =0; i < p && i < history.Length; i++)
+                {
+                    if (!String.IsNullOrEmpty(history[i]))
+                    {
+                        collection.Add(history[i]);
+                    }
+                }
+                return collection.ToArray();
+            }
         }
     }
 

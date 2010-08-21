@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Clish.Library.Models;
+using Mono.Terminal;
 
 namespace Clish.Library
 {
@@ -54,11 +55,12 @@ namespace Clish.Library
             {
                 return m_prompt ?? DefaultPromt;
             }
-            set
-            {
+            set{
                 m_prompt = value;
             }
         }
+
+        public LineEditor LineEditor { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration of the application.
@@ -88,7 +90,17 @@ namespace Clish.Library
                 Configuration.Views.ContainsKey(ViewName))
             {
                 // Select prompt for showing in the terminal.
-                View view = Configuration.Modules.Where(m => m.View != null && m.View.Name == ViewName).Select(m => m.View).FirstOrDefault();
+                List <View[]> views = Configuration.Modules.Where(m => m.Views != null).Select(m => m.Views).ToList();
+                View view = null;
+                foreach (var vs in views)
+                {
+                    view = vs.Where(i => i.Name == ViewName).FirstOrDefault();
+                    if (view != null)
+                    {
+                        break;
+                    }
+                }
+                
                 Prompt = view != null ? view.Prompt : DefaultPromt;
                 // Set top node of the colleciton commands filtered by view name.
                 CommandNode = Configuration.Views[ViewName];
@@ -142,5 +154,11 @@ namespace Clish.Library
         }
 
         #endregion
+
+        public void Show(string template)
+        {
+            Console.WriteLine(template);
+            LineEditor.Render();
+        }
     }
 }

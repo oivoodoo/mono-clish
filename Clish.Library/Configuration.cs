@@ -85,17 +85,23 @@ namespace Clish.Library
         {
             foreach (ClishModule module in Modules)
             {
-                if (module.View != null)
+                if (module.Views != null)
                 {
-                    AddCommands(module.View.Commands);
+                    foreach (var view in module.Views)
+                    {
+                        if (view != null)
+                        {
+                            AddCommands(view.Name, view.Commands);
+                        }
+                    }
                 }
                 if (module.Commands != null)
                 {
-                    AddCommands(module.Commands);
+                    AddCommands(DefaultViewName, module.Commands);
                 }
                 if (module.PTypes != null)
                 {
-                    foreach(PType type in module.PTypes)
+                    foreach (PType type in module.PTypes)
                     {
                         PTypes.Add(type.Name, type);
                     }
@@ -106,13 +112,13 @@ namespace Clish.Library
         /// <summary>
         /// Adds the commands.
         /// </summary>
+        /// <param name="name">The name.</param>
         /// <param name="commands">The commands.</param>
-        private void AddCommands(Command[] commands)
+        private void AddCommands(String name, Command[] commands)
         {
             foreach (Command command in commands)
             {
-                String viewName = String.IsNullOrEmpty(command.View) ? DefaultViewName : command.View;
-                AddToView(viewName, command);
+                AddToView(name, command);
             }
         }
 

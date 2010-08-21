@@ -24,13 +24,13 @@ namespace Clish.Library.Commands
         /// Runs the specified raw command.
         /// </summary>
         /// <param name="rawCommand">The raw command.</param>
-        public override bool Run(string rawCommand)
+        public override bool Run(Session session, string rawCommand)
         {
-            if(IsValidCommand(rawCommand))
+            if (View != null)
             {
-                return true;
+                Session.UpdateSession(View);
             }
-            return false;
+            return true;
         }
     }
 }

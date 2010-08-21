@@ -9,9 +9,9 @@
             Name = CommandName;
         }
 
-        public override bool Run(string rawCommand)
+        public override bool Run(Session session, string rawCommand)
         {
-            return true;
+            return base.Run(Session, rawCommand);
         }
     }
 }
