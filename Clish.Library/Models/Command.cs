@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Clish.Library.Commands;
@@ -140,7 +140,7 @@ namespace Clish.Library.Models
             get
             {
                 return !string.IsNullOrEmpty(View) ||
-                          !string.IsNullOrEmpty(ViewId);
+                       !string.IsNullOrEmpty(ViewId);
             }
         }
 
@@ -170,12 +170,24 @@ namespace Clish.Library.Models
                             return new HelpCommand(Session).Run(Session, rawCommand);
                     }
                 }
-                // SysCall
-                // Session.Print()
+                
+				RunCommand(ToRun);
+				
                 return true;
             }
             return false;
         }
+		
+		private void RunCommand(String toRun)
+		{
+			System.Diagnostics.Process process = new System.Diagnostics.Process();
+			process.EnableRaisingEvents = false;
+			process.StartInfo.FileName = toRun;
+			process.StartInfo.UseShellExecute = true;
+			process.Start();
+			process.WaitForExit();
+			Console.WriteLine(process.StandardOutput.ReadToEnd());
+		}
 
         protected bool IsValidCommand(String rawCommand)
         {
