@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Clish">
+</Property><Property Name="Solution File" Value="E:\Projects\mono-clish\Clish.sln">
+</Property><Property Name="User Options File" Value="E:\Projects\mono-clish\Clish.suo">
+</Property><Property Name="Date" Value="21 августа 2010 г.">
+</Property><Property Name="Time" Value="23:26">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Clish.sln" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.sln">
+</Event><Event ErrorLevel="0" Project="" Source="Clish.suo" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.suo">
+</Event><Event ErrorLevel="0" Project="Clish" Source="Clish.csproj" Description="Project file successfully backed up as E:\Projects\mono-clish\Backup\Clish.csproj">
+</Event><Event ErrorLevel="0" Project="Clish" Source="Clish.csproj.user" Description="Project user file successfully backed up as E:\Projects\mono-clish\Backup\Clish.csproj.user">
+</Event><Event ErrorLevel="0" Project="Clish" Source="Application.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Application.cs">
+</Event><Event ErrorLevel="0" Project="Clish" Source="MainClass.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\MainClass.cs">
+</Event><Event ErrorLevel="0" Project="Clish" Source="Options.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Options.cs">
+</Event><Event ErrorLevel="0" Project="Clish" Source="Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Clish" Source="app.config" Description="File successfully backed up as E:\Projects\mono-clish\Backup\app.config">
+</Event><Event ErrorLevel="0" Project="Clish" Source="clish.xsd" Description="File successfully backed up as E:\Projects\mono-clish\Backup\clish.xsd">
+</Event><Event ErrorLevel="0" Project="Clish" Source="TODO.txt" Description="File successfully backed up as E:\Projects\mono-clish\Backup\TODO.txt">
+</Event><Event ErrorLevel="1" Project="Clish" Source="Clish.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="Clish" Source="Clish.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Clish" Source="Clish.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Clish.Library.csproj" Description="Project file successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Clish.Library.csproj">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Clish.Library.csproj.user" Description="Project user file successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Clish.Library.csproj.user">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\CommandBuilder.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\CommandBuilder.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\CommandNode.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\CommandNode.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\ExitCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\ExitCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\HelpCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\HelpCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\HistoryCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\HistoryCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\LogoutCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\LogoutCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\TerminalCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\TerminalCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\TopCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\TopCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Commands\ViewCommand.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Commands\ViewCommand.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Configuration.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Configuration.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Constants.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Constants.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\DefinedVariables.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\DefinedVariables.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\Action.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\Action.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\ClishModule.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\ClishModule.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\Command.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\Command.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\CommandBase.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\CommandBase.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\ModelBase.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\ModelBase.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\Param.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\Param.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\PType.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\PType.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\Startup.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\Startup.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Models\View.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Models\View.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Mono\Terminal\getline.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Mono\Terminal\getline.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Session.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Session.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Utilities\FileUtility.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Utilities\FileUtility.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Utilities\NamespaceIgnorantXmlTextReader.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Utilities\NamespaceIgnorantXmlTextReader.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Utilities\XmlUtility.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\Utilities\XmlUtility.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\configure.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\configure.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\debug.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\debug.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\edit-view.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\edit-view.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\global-commands.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\global-commands.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\qos.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\qos.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\root-view.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\root-view.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\startup.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\startup.xml">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\xml-examples\types.xml" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Library\xml-examples\types.xml">
+</Event><Event ErrorLevel="1" Project="Clish.Library" Source="Clish.Library\Clish.Library.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Clish.Library.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Clish.Library" Source="Clish.Library\Clish.Library.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Clish.Logs.csproj" Description="Project file successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Clish.Logs.csproj">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Clish.Logs.csproj.user" Description="Project user file successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Clish.Logs.csproj.user">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Logs\Log.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Logs\Log.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Logs\Logger.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Logs\Logger.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Logs\ResourceFileConfigurationAttribute.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Logs\ResourceFileConfigurationAttribute.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Logs\log4net.xml.config" Description="File successfully backed up as E:\Projects\mono-clish\Backup\Clish.Logs\Logs\log4net.xml.config">
+</Event><Event ErrorLevel="1" Project="Clish.Logs" Source="Clish.Logs\Clish.Logs.csproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Clish.Logs.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Clish.Logs" Source="Clish.Logs\Clish.Logs.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Clish.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Clish.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Clish" Source="app.config" Description="File converted successfully. All &lt;supportedRuntime&gt; and &lt;requiredRuntime&gt; tags were removed to enable the project to build and run with Visual Studio 2005.">
+</Event><Event ErrorLevel="3" Project="Clish" Source="app.config" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Clish.Library" Source="Clish.Library\Clish.Library.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Clish.Logs" Source="Clish.Logs\Clish.Logs.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

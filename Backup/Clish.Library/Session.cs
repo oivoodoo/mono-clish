@@ -138,21 +138,13 @@ namespace Clish.Library
         public void UpdateSessionByViewParams(string viewId)
         {
             //  Example of params line: viewid="name=${name};operation=add"
-            var ps = viewId.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries);
+            var ps = viewId.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var line in ps)
             {
                 var values = line.Split(new[] { "=" }, StringSplitOptions.RemoveEmptyEntries);
                 if (values.Length == 2)
                 {
-                    // Remove cool hack from this line, when we found another way to bind xml attributes of view.
-                    if (values[1] == "${name}")
-                    {
-                        Prompt = Prompt.Replace("${" + values[0] + "}", ViewName);
-                    }
-                    else
-                    {
-                        Prompt = Prompt.Replace("${" + values[0] + "}", values[1]);
-                    }
+                    Prompt = Prompt.Replace("${" + values[0] + "}", values[1]);
                 }
             }
             foreach (KeyValuePair<string, string> pair in DefinedVariables.Variables)

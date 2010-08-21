@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Xml.Serialization;
 using Clish.Library.Commands;
-using Clish.Logs.Logs;
 
 namespace Clish.Library.Models
 {
@@ -172,16 +170,8 @@ namespace Clish.Library.Models
                             return new HelpCommand(Session).Run(Session, rawCommand);
                     }
                 }
-
-                try
-                {
-                    RunCommand(ToRun);
-                }
-                catch (Exception ex)
-                {
-                    Log.CoreLog.Error(ex);
-                    Console.WriteLine("Can't run command.");
-                }
+                
+				RunCommand(ToRun);
 				
                 return true;
             }
@@ -190,8 +180,11 @@ namespace Clish.Library.Models
 		
 		private void RunCommand(String toRun)
 		{
-			var process = new Process {EnableRaisingEvents = false, StartInfo = {FileName = toRun, UseShellExecute = true}};
-		    process.Start();
+			System.Diagnostics.Process process = new System.Diagnostics.Process();
+			process.EnableRaisingEvents = false;
+			process.StartInfo.FileName = toRun;
+			process.StartInfo.UseShellExecute = true;
+			process.Start();
 			process.WaitForExit();
 			Console.WriteLine(process.StandardOutput.ReadToEnd());
 		}
