@@ -8,5 +8,10 @@
         {
             Name = CommandName;
         }
+
+        public override bool Run(string rawCommand)
+        {
+            return true;
+        }
     }
 }

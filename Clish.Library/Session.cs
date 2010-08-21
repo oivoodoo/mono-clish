@@ -92,6 +92,10 @@ namespace Clish.Library
                 Prompt = view != null ? view.Prompt : DefaultPromt;
                 // Set top node of the colleciton commands filtered by view name.
                 CommandNode = Configuration.Views[ViewName];
+                foreach (KeyValuePair<string, string> pair in DefinedVariables.Variables)
+                {
+                    Prompt = Prompt.Replace(pair.Key, pair.Value);
+                }
                 return true;
             }
             return false;
@@ -113,6 +117,28 @@ namespace Clish.Library
                 results.Add(String.Format("{0} - {1}", node.Command.Name, node.Command.Help));
             }
             return results;
+        }
+
+        /// <summary>
+        /// Method impelement insertation of params to prompt.
+        /// </summary>
+        /// <param name="viewId"></param>
+        public void UpdateSessionByViewParams(string viewId)
+        {
+            //  Example of params line: viewid="name=${name};operation=add"
+            var ps = viewId.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var line in ps)
+            {
+                var values = line.Split(new[] { "=" }, StringSplitOptions.RemoveEmptyEntries);
+                if (values.Length == 2)
+                {
+                    Prompt = Prompt.Replace("${" + values[0] + "}", values[1]);
+                }
+            }
+            foreach (KeyValuePair<string, string> pair in DefinedVariables.Variables)
+            {
+                Prompt = Prompt.Replace(pair.Key, pair.Value);
+            }
         }
 
         #endregion

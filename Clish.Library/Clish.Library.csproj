@@ -75,6 +75,7 @@
     <Compile Include="Commands\TopCommand.cs" />
     <Compile Include="Commands\ViewCommand.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="DefinedVariables.cs" />
     <Compile Include="Models\Action.cs" />
     <Compile Include="Models\ClishModule.cs" />
     <Compile Include="Models\Command.cs" />

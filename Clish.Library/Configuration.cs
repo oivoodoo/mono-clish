@@ -85,13 +85,13 @@ namespace Clish.Library
         {
             foreach (ClishModule module in Modules)
             {
+                if (module.View != null)
+                {
+                    AddCommands(module.View.Commands);
+                }
                 if (module.Commands != null)
                 {
                     AddCommands(module.Commands);
-                    if (module.View != null)
-                    {
-                        AddCommands(module.View.Commands);
-                    }
                 }
                 if (module.PTypes != null)
                 {

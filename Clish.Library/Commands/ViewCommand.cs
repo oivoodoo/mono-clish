@@ -20,7 +20,7 @@ namespace Clish.Library.Commands
         {
             Name = CommandName;
             Params = new Param[1];
-            var ptype = new PType() {Help = "View name type", Method = MethodType.Regexp, Name = "view_name_string"};
+            var ptype = new PType {Help = "View name type", Method = MethodType.Regexp, Name = "view_name_string"};
             Configuration.PTypes.Add(ptype.Name, ptype);
             var param = new Param {Help = "View name for getting scope of commands.", Name = "viewname", PType = "view_name_string"};
             Params[0] = param;

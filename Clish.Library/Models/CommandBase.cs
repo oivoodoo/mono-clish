@@ -46,6 +46,11 @@ namespace Clish.Library.Models
             {
                 ToRun = builder.BuildCommand();
                 ParsedParams = builder.ParsedParams;
+                var command = ((Command) this);
+                if (!String.IsNullOrEmpty(command.ViewId))
+                {
+                    Session.UpdateSessionByViewParams(command.ViewId);
+                }
             }
             catch (Exception ex)
             {
