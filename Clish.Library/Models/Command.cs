@@ -196,6 +196,7 @@ namespace Clish.Library.Models
 		    process.Start();
 			process.WaitForExit();
 			Console.WriteLine(process.StandardOutput.ReadToEnd());
+			Console.WriteLine();
 		}
 
         protected bool IsValidCommand(String rawCommand)
